@@ -178,18 +178,18 @@ const DETAIL = {
 
 // ─── MIND MAP LAYOUT ──────────────────────────────────────────────────────────
 
-const CX = 550, CY = 440;
+const CX = 450, CY = 360;
 
 const NODES = {
-  center:       { x: CX,  y: CY,  r: 108, lines: ["GRUPO", "ARCE", "MONSEGUR"], isCenter: true },
-  fci:          { x: 200, y: 190, r: 88,  lines: ["Fondos Comunes", "de Inversión"] },
-  family:       { x: 170, y: 660, r: 88,  lines: ["Family", "Office"] },
-  admin:        { x: 880, y: 440, r: 88,  lines: ["Administración", "de Propiedades"] },
-  compraventa:  { x: 580, y: 760, r: 88,  lines: ["Compra, Venta", "Alquileres"] },
-  fci_re:       { x: 60,  y: 50,  r: 66,  lines: ["FCI", "Real Estate"],                isSub: true },
-  fci_fin:      { x: 340, y: 50,  r: 66,  lines: ["FCI", "Financiero"],                 isSub: true },
-  admin_temp:   { x: 990, y: 230, r: 66,  lines: ["Alquileres", "Temporales", "(Airbnb)"], isSub: true },
-  admin_cv:     { x: 990, y: 650, r: 66,  lines: ["Refacciones", "y Mantenimiento"],    isSub: true },
+  center:       { x: CX,  y: CY,  r: 82,  lines: ["GRUPO", "ARCE", "MONSEGUR"], isCenter: true },
+  fci:          { x: 210, y: 190, r: 68,  lines: ["Fondos Comunes", "de Inversión"] },
+  family:       { x: 140, y: 520, r: 68,  lines: ["Family", "Office"] },
+  admin:        { x: 720, y: 355, r: 68,  lines: ["Administración", "de Propiedades"] },
+  compraventa:  { x: 460, y: 610, r: 68,  lines: ["Compra, Venta", "Alquileres"] },
+  fci_re:       { x: 90,  y: 75,  r: 52,  lines: ["FCI", "Real Estate"],                isSub: true },
+  fci_fin:      { x: 310, y: 75,  r: 52,  lines: ["FCI", "Financiero"],                 isSub: true },
+  admin_temp:   { x: 820, y: 185, r: 52,  lines: ["Alquileres", "Temporales", "(Airbnb)"], isSub: true },
+  admin_cv:     { x: 820, y: 525, r: 52,  lines: ["Refacciones", "y Mantenimiento"],    isSub: true },
 };
 
 const CONNECTIONS = [
@@ -235,14 +235,15 @@ function MapNode({ id, onNavigate }) {
       {n.isCenter && (
         <image
           href={LOGO_ICON}
-          x={n.x - 28} y={n.y - tot/2 - 36}
-          width={56} height={56}
+          x={n.x - 26} y={n.y - tot/2 - 58}
+          width={52} height={52}
+          preserveAspectRatio="xMidYMid meet"
           style={{ pointerEvents: "none" }}
         />
       )}
       {n.lines.map((line, i) => (
         <text key={i}
-          x={n.x} y={n.y - tot / 2 + i * lh + lh * 0.65 + (n.isCenter ? 22 : 0)}
+          x={n.x} y={n.y - tot / 2 + i * lh + lh * 0.65 + (n.isCenter ? 20 : 0)}
           textAnchor="middle" dominantBaseline="middle"
           fill={tc} fontFamily="'Barlow Condensed', sans-serif"
           fontSize={fs} fontWeight="700" letterSpacing="0.05em"
@@ -264,8 +265,8 @@ function MapNode({ id, onNavigate }) {
 function MindMap({ onNavigate }) {
   return (
     <div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
-      <svg viewBox="0 0 1100 900"
-        style={{ display: "block", margin: "0 auto", width: "100%", minWidth: 720, maxWidth: 1100 }}>
+      <svg viewBox="0 0 900 700"
+        style={{ display: "block", margin: "0 auto", width: "100%", maxWidth: 900 }}>
         <defs>
           <style>{`
             @keyframes dl { to { stroke-dashoffset: 0 } }
@@ -284,8 +285,8 @@ function MindMap({ onNavigate }) {
               fill="none" stroke="rgba(201,168,76,0.045)" strokeWidth="1"/>
           </pattern>
         </defs>
-        <rect width="1100" height="900" fill="url(#bgr)" rx="18"/>
-        <rect width="1100" height="900" fill="url(#hexp)" rx="18"/>
+        <rect width="900" height="700" fill="url(#bgr)" rx="18"/>
+        <rect width="900" height="700" fill="url(#hexp)" rx="18"/>
         {CONNECTIONS.map(([a, b], i) => {
           const na = NODES[a], nb = NODES[b];
           return <Line key={`${a}-${b}`} x1={na.x} y1={na.y} x2={nb.x} y2={nb.y} delay={0.25 + i * 0.08}/>;
