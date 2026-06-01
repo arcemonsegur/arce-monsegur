@@ -168,14 +168,14 @@ const DETAIL = {
     headline: "Propiedades Disponibles",
     body: "Administramos estas propiedades en Airbnb y plataformas de alquiler temporal. Hacé clic en cada una para ver disponibilidad y reservar.",
     propCards: [
-      {
-        name: "Amplio depto. en Palermo Soho con terraza privada",
-        location: "Palermo Soho, Buenos Aires",
-        rating: "4.92",
-        details: "1 dorm. · 2 camas · 1.5 baños",
-        image: "https://a0.muscache.com/im/pictures/hosting/Hosting-779881000813521625/original/6c1bc39d-ef74-491b-976a-43a8c27f771a.jpeg?im_w=720",
-        link: "https://www.airbnb.com.ar/rooms/779881000813521625",
-      },
+      { name: "Amplio depto. en Palermo Soho con terraza privada", location: "Palermo Soho, Buenos Aires", rating: "4.92", details: "1 dorm. · 2 camas · 1.5 baños", image: "https://a0.muscache.com/im/pictures/hosting/Hosting-779881000813521625/original/6c1bc39d-ef74-491b-976a-43a8c27f771a.jpeg?im_w=720", link: "https://www.airbnb.com.ar/rooms/779881000813521625" },
+      { name: "Depto nuevo con jardín en Palermo Soho", location: "Palermo Soho, Buenos Aires", rating: "4.68", details: "1 dorm. · 3 camas · 1 baño · Pileta y parrilla", image: "https://a0.muscache.com/im/pictures/miso/Hosting-994670911825466437/original/da413c9e-557d-47e0-8b2c-1369681de0df.jpeg?im_w=720", link: "https://www.airbnb.com.ar/rooms/994670911825466437" },
+      { name: "Depto nuevo con terraza privada en Palermo Soho", location: "Palermo Soho, Buenos Aires", rating: "4.75", details: "1 dorm. · 1 baño · Terraza privada", image: "https://a0.muscache.com/im/pictures/hosting/Hosting-1071561147770031863/original/22d64c27-bae4-40dc-976f-4eb7d9fcfacc.jpeg?im_w=720", link: "https://www.airbnb.com.ar/rooms/1071561147770031863" },
+      { name: "Depto nuevo en Palermo Soho", location: "Palermo Soho, Buenos Aires", rating: "4.96", details: "Monoambiente · 1 cama · 1 baño · Edificio a estrenar", image: "https://a0.muscache.com/im/pictures/miso/Hosting-1112457380765183751/original/174ad702-52c0-4033-9366-d22e198434a4.jpeg?im_w=720", link: "https://www.airbnb.com.ar/rooms/1112457380765183751" },
+      { name: "Depto nuevo en Palermo Soho", location: "Palermo Soho, Buenos Aires", rating: "4.91", details: "1 dorm. · 2 camas · 1 baño · Totalmente equipado", image: "https://a0.muscache.com/im/pictures/miso/Hosting-1020285794304513605/original/cf0772a3-372a-4078-bc18-a82b0f5dc919.jpeg?im_w=720", link: "https://www.airbnb.com.ar/rooms/1020285794304513605" },
+      { name: "Depto. nuevo con terraza privada en Palermo Soho", location: "Palermo Soho, Buenos Aires", rating: "", details: "1 dorm. · 1 cama · 1 baño · Terraza privada", image: "https://a0.muscache.com/im/pictures/hosting/Hosting-1573280405153189656/original/c0338490-2351-4945-a044-b041ae8d6ccb.jpeg?im_w=720", link: "https://www.airbnb.com.ar/rooms/1573280405153189656" },
+      { name: "Depto. nuevo en Palermo Soho", location: "Palermo Soho, Buenos Aires", rating: "", details: "1 dorm. · 1 baño · Edificio nuevo", image: "", link: "https://www.airbnb.com.ar/rooms/1590574889659283593" },
+      { name: "Elegante apartamento tipo hotel", location: "Vicente López, Buenos Aires", rating: "4.78", details: "1 dorm. · 1 cama · 1 baño · Frente a Plaza Vicente López", image: "https://a0.muscache.com/im/pictures/miso/Hosting-1116025176878641665/original/92d65c98-6a51-4480-9f06-18ee658d26b9.jpeg?im_w=720", link: "https://www.airbnb.com.ar/rooms/1116025176878641665" },
     ],
   },
   compraventa: {
