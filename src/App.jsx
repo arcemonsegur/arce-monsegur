@@ -32,7 +32,7 @@ const DETAIL = {
   center: {
     badge: "Grupo Arce Monsegur",
     headline: "Nicolás Arce Monsegur",
-    sub: "Martillero · Corredor Inmobiliario · Agente CNV",
+    sub: "Lic. en Desarrollo de Negocios Inmobiliarios · Agente CNV · Corredor Inmobiliario · Martillero",
     intro: `Profesional con formación dual en el mercado inmobiliario y el mercado de capitales. Combino la solidez técnica de la corredura matriculada con la visión financiera del asesor de inversiones, ofreciendo una perspectiva integral única en Argentina.\n\nMi filosofía: cada decisión inmobiliaria es también una decisión financiera. Con esa convicción guío a familias, inversores y empresas para maximizar su patrimonio con seguridad jurídica, transparencia y criterio técnico.`,
     credentials: [
       { label: "Lic. en Desarrollo de Negocios Inmobiliarios", desc: "Universidad Siglo 21 — estructuración, financiamiento y gestión de proyectos inmobiliarios" },
@@ -199,7 +199,7 @@ const NODES = {
   fci_re:       { x: 90,  y: 75,  r: 52,  lines: ["Fondo", "Real Estate"],                isSub: true },
   fci_fin:      { x: 310, y: 75,  r: 52,  lines: ["Fondo", "Financiero"],                 isSub: true },
   admin_temp:   { x: 820, y: 185, r: 52,  lines: ["Alquileres", "Temporales", "(Airbnb)"], isSub: true },
-  propiedades:  { x: 310, y: 185, r: 48,  lines: ["Propiedades", "Disponibles"], isSub: true, isSub2: true },
+  propiedades:  { x: 660, y: 75,  r: 48,  lines: ["Propiedades", "Disponibles"], isSub: true, isSub2: true },
   admin_cv:     { x: 820, y: 525, r: 52,  lines: ["Refacciones", "y Mantenimiento"],    isSub: true },
 };
 
@@ -246,15 +246,15 @@ function MapNode({ id, onNavigate }) {
       {n.isCenter && (
         <image
           href={LOGO_ICON}
-          x={n.x - 24} y={n.y - tot/2 - 55}
-          width={48} height={48}
+          x={n.x - 36} y={n.y - tot/2 - 74}
+          width={72} height={72}
           preserveAspectRatio="xMidYMid meet"
           style={{ pointerEvents: "none" }}
         />
       )}
       {n.lines.map((line, i) => (
         <text key={i}
-          x={n.x} y={n.y - tot / 2 + i * lh + lh * 0.65 + (n.isCenter ? 20 : 0)}
+          x={n.x} y={n.y - tot / 2 + i * lh + lh * 0.65 + (n.isCenter ? 30 : 0)}
           textAnchor="middle" dominantBaseline="middle"
           fill={tc} fontFamily="'Barlow Condensed', sans-serif"
           fontSize={fs} fontWeight="700" letterSpacing="0.05em"
