@@ -585,7 +585,7 @@ function HamburgerMenu({ onNavigate }) {
     { id: "admin",  l: "Propiedades" },
   ];
   return (
-    <div style={{ display: "none" }} className="mobile-hamburger">
+    <div className="mobile-hamburger">
       <style>{`
         @media (max-width: 768px) {
           .mobile-hamburger { display: block !important; position: relative; }
@@ -649,7 +649,10 @@ function Home({ onNavigate }) {
         ::-webkit-scrollbar-thumb { background:rgba(201,168,76,0.3); border-radius:3px; }
         @media (max-width: 768px) {
           .mobile-hide { display: none !important; }
-          .mobile-pad { padding: 0 16px !important; }
+          .mobile-hamburger { display: block !important; }
+        }
+        @media (min-width: 769px) {
+          .mobile-hamburger { display: none !important; }
         }
       `}</style>
 
