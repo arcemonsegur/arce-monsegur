@@ -205,13 +205,13 @@ const CX = 450, CY = 360;
 const NODES = {
   center:       { x: CX,  y: CY,  r: 105, lines: ["ARCE", "MONSEGUR"], isCenter: true },
   fci:          { x: 210, y: 190, r: 80,  lines: ["Fondos de", "Inversión"] },
-  family:       { x: 140, y: 520, r: 80,  lines: ["Family", "Office"] },
+  family:       { x: 167, y: 506, r: 80,  lines: ["Family", "Office"] },
   admin:        { x: 720, y: 355, r: 80,  lines: ["Administración", "de Propiedades"] },
   compraventa:  { x: 580, y: 558, r: 62,  lines: ["Propiedades en", "Venta y Alq."], isSub: true },
   fci_re:       { x: 90,  y: 75,  r: 52,  lines: ["Fondo", "Real Estate"],                isSub: true },
   fci_fin:      { x: 310, y: 75,  r: 52,  lines: ["Fondo", "Financiero"],                 isSub: true },
-  admin_temp:   { x: 820, y: 185, r: 64,  lines: ["Alquileres", "Temporales", "(Airbnb)"], isSub: true },
-  propiedades:  { x: 660, y: 75,  r: 68,  lines: ["Propiedades", "Disponibles"], isSub: true },
+  admin_temp:   { x: 600, y: 210, r: 64,  lines: ["Alquileres", "Temporales", "(Airbnb)"], isSub: true },
+  propiedades:  { x: 780, y: 90,  r: 68,  lines: ["Propiedades", "Disponibles"], isSub: true },
   admin_cv:     { x: 820, y: 525, r: 64,  lines: ["Refacciones", "y Mantenimiento"],    isSub: true },
 };
 
@@ -632,6 +632,7 @@ function HamburgerMenu({ onNavigate }) {
 
 function Home({ onNavigate }) {
   const [sc, setSc] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const fn = () => setSc(window.scrollY > 40);
     window.addEventListener("scroll", fn);
