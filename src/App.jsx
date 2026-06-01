@@ -319,8 +319,8 @@ function MindMap({ onNavigate }) {
         ))}
         {/* COMING SOON label on fci->center line */}
         <g style={{ animation: "pi 0.5s 1s ease both", opacity: 0 }}>
-          <rect x="258" y="222" width="138" height="26" rx="4" fill={NAVY} stroke={GOLD} strokeWidth="1.5"/>
-          <text x="327" y="235" textAnchor="middle" dominantBaseline="middle"
+          <rect x="238" y="234" width="138" height="26" rx="4" fill={NAVY} stroke={GOLD} strokeWidth="1.5"/>
+          <text x="307" y="247" textAnchor="middle" dominantBaseline="middle"
             fill={GOLD} fontFamily="'Barlow', sans-serif"
             fontSize="10" fontWeight="700" letterSpacing="0.14em">
             🚧 COMING SOON
