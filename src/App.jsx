@@ -206,7 +206,7 @@ const NODES = {
   fci_re:       { x: 90,  y: 75,  r: 52,  lines: ["Fondo", "Real Estate"],                isSub: true },
   fci_fin:      { x: 310, y: 75,  r: 52,  lines: ["Fondo", "Financiero"],                 isSub: true },
   admin_temp:   { x: 820, y: 185, r: 52,  lines: ["Alquileres", "Temporales", "(Airbnb)"], isSub: true },
-  propiedades:  { x: 660, y: 75,  r: 48,  lines: ["Propiedades", "Disponibles"], isSub: true, isSub2: true },
+  propiedades:  { x: 660, y: 75,  r: 68,  lines: ["Propiedades", "Disponibles"], isSub: true },
   admin_cv:     { x: 820, y: 525, r: 52,  lines: ["Refacciones", "y Mantenimiento"],    isSub: true },
 };
 
