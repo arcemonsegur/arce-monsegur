@@ -48,8 +48,8 @@ const DETAIL = {
       { n: "360°", l: "Asesoramiento integral" },
     ],
     vmo: [
-      { icon: "◎", title: "Visión", body: "Ser la firma de referencia en Argentina para inversores que buscan integrar el mercado inmobiliario con el mercado de capitales, reconocidos por calidad técnica, transparencia y creación sostenida de valor patrimonial." },
-      { icon: "◈", title: "Misión", body: "Brindar asesoramiento integral y estratégico en real estate e inversiones financieras, combinando las credenciales de corredor inmobiliario matriculado y agente CNV para ofrecer soluciones a medida con seguridad jurídica." },
+      { icon: "◎", title: "Visión", body: "Ser la firma de referencia para quienes buscan hacer crecer y proteger su patrimonio, reconocidos por el impacto real que generamos en la vida de nuestros clientes y sus familias." },
+      { icon: "◈", title: "Misión", body: "Diseñar la estrategia patrimonial más adecuada para cada cliente, entendiendo sus objetivos, su perfil de inversión y su contexto particular. Trabajamos con el compromiso de que cada persona pueda tomar decisiones con confianza y dormir tranquila sabiendo que su patrimonio está siendo gestionado de forma profesional, transparente y alineada con sus intereses." },
       { icon: "◇", title: "Objetivos", body: "• Consolidar un fondo inmobiliario de USD 3M+ a corto plazo\n• Escalar la cartera de administración a 50+ unidades\n• Desarrollar Family Office para 5+ familias patrimoniales" },
     ],
     re_blocks: [
