@@ -287,9 +287,9 @@ function MapNode({ id, onNavigate }) {
 
 function MindMap({ onNavigate }) {
   return (
-    <div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+    <div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch", cursor: "grab" }}>
       <svg viewBox="0 0 900 700"
-        style={{ display: "block", margin: "0 auto", width: "100%", maxWidth: 900 }}>
+        style={{ display: "block", margin: "0 auto", width: "100%", minWidth: 600, maxWidth: 900 }}>
         <defs>
           <style>{`
             @keyframes dl { to { stroke-dashoffset: 0 } }
@@ -341,7 +341,7 @@ function Shell({ onBack, badge, headline, sub, children }) {
         position: "sticky", top: 0, zIndex: 100,
         background: "rgba(11,24,38,0.97)", backdropFilter: "blur(12px)",
         borderBottom: "1px solid rgba(201,168,76,0.18)",
-        padding: "16px 40px", display: "flex", alignItems: "center", gap: 14,
+        padding: "14px clamp(14px, 4vw, 40px)", display: "flex", alignItems: "center", gap: 14,
       }}>
         <button onClick={onBack} style={{
           background: "none", border: "1px solid rgba(201,168,76,0.3)", color: GOLD,
@@ -356,7 +356,7 @@ function Shell({ onBack, badge, headline, sub, children }) {
         <div style={{ width: 1, height: 20, background: "rgba(201,168,76,0.2)" }}/>
         <LogoIcon size={36} useReal={true}/>
       </div>
-      <div style={{ padding: "60px 10vw 100px", maxWidth: 1120, margin: "0 auto", animation: "fsi 0.5s ease both" }}>
+      <div style={{ padding: "40px clamp(16px, 6vw, 80px) 80px", maxWidth: 1120, margin: "0 auto", animation: "fsi 0.5s ease both" }}>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 9, marginBottom: 18 }}>
           <div style={{ width: 24, height: 1, background: GOLD }}/>
           <span style={{ color: GOLD, fontSize: "0.67rem", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" }}>{badge}</span>
@@ -389,7 +389,7 @@ function SecHead({ label, title }) {
 
 function Grid({ children }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 2, background: "rgba(255,255,255,0.03)", marginBottom: 64 }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))", gap: 2, background: "rgba(255,255,255,0.03)", marginBottom: 64 }}>
       {children}
     </div>
   );
@@ -416,7 +416,7 @@ function CenterPage({ onBack }) {
       </p>
 
       {/* Stats */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 2, marginBottom: 64 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(160px, 100%), 1fr))", gap: 2, marginBottom: 64 }}>
         {d.stats.map(s => (
           <div key={s.n} style={{ background: "#0d1e30", padding: "22px 24px", borderBottom: `3px solid ${GOLD}` }}>
             <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.9rem", fontWeight: 800, color: GOLD, lineHeight: 1 }}>{s.n}</div>
@@ -502,7 +502,7 @@ function GenericPage({ pageId, onBack, onNavigate }) {
         </Grid>
       )}
       {d.propCards && (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24, marginBottom: 48 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(300px, 100%), 1fr))", gap: 24, marginBottom: 48 }}>
           {d.propCards.map((prop, i) => (
             <a key={i} href={prop.link} target="_blank" rel="noopener noreferrer"
               style={{ textDecoration: "none", display: "block", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(201,168,76,0.2)", overflow: "hidden", transition: "transform 0.3s, box-shadow 0.3s", borderRadius: 4 }}
@@ -592,13 +592,17 @@ function Home({ onNavigate }) {
         ::-webkit-scrollbar { width:6px; height:6px; }
         ::-webkit-scrollbar-track { background:${NAVY}; }
         ::-webkit-scrollbar-thumb { background:rgba(201,168,76,0.3); border-radius:3px; }
+        @media (max-width: 768px) {
+          .mobile-hide { display: none !important; }
+          .mobile-pad { padding: 0 16px !important; }
+        }
       `}</style>
 
       {/* NAV */}
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 200,
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: sc ? "12px 44px" : "18px 44px",
+        padding: sc ? "10px 16px" : "14px 16px",
         background: "rgba(11,24,38,0.97)", backdropFilter: "blur(14px)",
         borderBottom: "1px solid rgba(201,168,76,0.17)", transition: "padding 0.3s",
       }}>
@@ -606,7 +610,7 @@ function Home({ onNavigate }) {
           style={{ display: "flex", alignItems: "center", gap: 11, background: "none", border: "none", cursor: "pointer", padding: 0 }}>
           <LogoIcon size={44} color="white" useReal={true}/>
         </button>
-        <div style={{ display: "flex", gap: 6 }}>
+        <div className="mobile-hide" style={{ display: "flex", gap: 6 }}>
           {[
             { id: "center", l: "Nosotros" },
             { id: "fci",    l: "Fondos de Inversión" },
