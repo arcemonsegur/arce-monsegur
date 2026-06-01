@@ -207,7 +207,7 @@ const NODES = {
   fci:          { x: 210, y: 190, r: 80,  lines: ["Fondos de", "Inversión"] },
   family:       { x: 167, y: 506, r: 80,  lines: ["Family", "Office"] },
   admin:        { x: 720, y: 355, r: 80,  lines: ["Administración", "de Propiedades"] },
-  compraventa:  { x: 580, y: 558, r: 62,  lines: ["Propiedades en", "Venta y Alq."], isSub: true },
+  compraventa:  { x: 580, y: 528, r: 74,  lines: ["Propiedades en", "Venta y Alq."], isSub: true },
   fci_re:       { x: 90,  y: 75,  r: 52,  lines: ["Fondo", "Real Estate"],                isSub: true },
   fci_fin:      { x: 310, y: 75,  r: 52,  lines: ["Fondo", "Financiero"],                 isSub: true },
   admin_temp:   { x: 600, y: 210, r: 64,  lines: ["Alquileres", "Temporales", "(Airbnb)"], isSub: true },
