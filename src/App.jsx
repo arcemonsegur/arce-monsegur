@@ -180,7 +180,7 @@ const DETAIL = {
   },
   compraventa: {
     badge: "Intermediación Inmobiliaria",
-    headline: "Compra, Venta y Alquileres",
+    headline: "Propiedades en Venta y Alquileres",
     body: "Como corredores y martilleros inmobiliarios matriculados, intermediamos en compraventa y locación de inmuebles residenciales y comerciales, aportando conocimiento de mercado, red de contactos calificada y capacidad de estructuración financiera.",
     items: [
       { label: "Tasación profesional", value: "Valuación técnica con análisis comparativo de mercado actualizado" },
@@ -204,21 +204,21 @@ const CX = 450, CY = 360;
 
 const NODES = {
   center:       { x: CX,  y: CY,  r: 105, lines: ["ARCE", "MONSEGUR"], isCenter: true },
-  fci:          { x: 210, y: 190, r: 68,  lines: ["Fondos de", "Inversión"] },
-  family:       { x: 140, y: 520, r: 68,  lines: ["Family", "Office"] },
-  admin:        { x: 720, y: 355, r: 68,  lines: ["Administración", "de Propiedades"] },
-  compraventa:  { x: 460, y: 610, r: 68,  lines: ["Compra, Venta", "Alquileres"] },
+  fci:          { x: 210, y: 190, r: 80,  lines: ["Fondos de", "Inversión"] },
+  family:       { x: 140, y: 520, r: 80,  lines: ["Family", "Office"] },
+  admin:        { x: 720, y: 355, r: 80,  lines: ["Administración", "de Propiedades"] },
+  compraventa:  { x: 580, y: 558, r: 62,  lines: ["Propiedades en", "Venta y Alq."], isSub: true },
   fci_re:       { x: 90,  y: 75,  r: 52,  lines: ["Fondo", "Real Estate"],                isSub: true },
   fci_fin:      { x: 310, y: 75,  r: 52,  lines: ["Fondo", "Financiero"],                 isSub: true },
-  admin_temp:   { x: 820, y: 185, r: 52,  lines: ["Alquileres", "Temporales", "(Airbnb)"], isSub: true },
+  admin_temp:   { x: 820, y: 185, r: 64,  lines: ["Alquileres", "Temporales", "(Airbnb)"], isSub: true },
   propiedades:  { x: 660, y: 75,  r: 68,  lines: ["Propiedades", "Disponibles"], isSub: true },
-  admin_cv:     { x: 820, y: 525, r: 52,  lines: ["Refacciones", "y Mantenimiento"],    isSub: true },
+  admin_cv:     { x: 820, y: 525, r: 64,  lines: ["Refacciones", "y Mantenimiento"],    isSub: true },
 };
 
 const CONNECTIONS = [
-  ["center", "fci"], ["center", "family"], ["center", "admin"], ["center", "compraventa"],
+  ["center", "fci"], ["center", "family"], ["center", "admin"],
   ["fci", "fci_re"], ["fci", "fci_fin"],
-  ["admin", "admin_temp"], ["admin", "admin_cv"], ["admin_temp", "propiedades"],
+  ["admin", "admin_temp"], ["admin", "admin_cv"], ["admin", "compraventa"], ["admin_temp", "propiedades"],
 ];
 
 function Line({ x1, y1, x2, y2, delay = 0 }) {
@@ -238,7 +238,7 @@ function MapNode({ id, onNavigate }) {
   const fill = n.isCenter ? GOLD : hov ? "#22384f" : NAVY2;
   const tc   = n.isCenter ? NAVY : GOLD;
   const sc   = hov || n.isCenter ? GOLD : "rgba(201,168,76,0.45)";
-  const fs   = n.isSub ? 11.5 : n.isCenter ? 17 : 13;
+  const fs   = n.isSub ? 13.5 : n.isCenter ? 19 : 17;
   const lh   = fs + 4;
   const tot  = n.lines.length * lh;
 
@@ -574,6 +574,61 @@ function GenericPage({ pageId, onBack, onNavigate }) {
 }
 
 // ─── HOME PAGE ────────────────────────────────────────────────────────────────
+
+
+function HamburgerMenu({ onNavigate }) {
+  const [open, setOpen] = useState(false);
+  const NAV_ITEMS = [
+    { id: "center", l: "Nosotros" },
+    { id: "fci",    l: "Fondos de Inversión" },
+    { id: "family", l: "Family Office" },
+    { id: "admin",  l: "Propiedades" },
+  ];
+  return (
+    <div style={{ display: "none" }} className="mobile-hamburger">
+      <style>{`
+        @media (max-width: 768px) {
+          .mobile-hamburger { display: block !important; position: relative; }
+        }
+      `}</style>
+      {/* Hamburger button */}
+      <button onClick={() => setOpen(!open)}
+        style={{ background: "none", border: `1px solid rgba(201,168,76,0.35)`, padding: "8px 10px", cursor: "pointer", display: "flex", flexDirection: "column", gap: 5, borderRadius: 3 }}>
+        <div style={{ width: 22, height: 2, background: open ? GOLD : "rgba(255,255,255,0.7)", transition: "all 0.3s", transform: open ? "rotate(45deg) translate(5px, 5px)" : "none" }}/>
+        <div style={{ width: 22, height: 2, background: open ? "transparent" : "rgba(255,255,255,0.7)", transition: "all 0.3s" }}/>
+        <div style={{ width: 22, height: 2, background: open ? GOLD : "rgba(255,255,255,0.7)", transition: "all 0.3s", transform: open ? "rotate(-45deg) translate(5px, -5px)" : "none" }}/>
+      </button>
+      {/* Dropdown menu */}
+      {open && (
+        <div style={{
+          position: "absolute", top: "calc(100% + 12px)", right: 0,
+          background: "rgba(11,24,38,0.98)", border: `1px solid rgba(201,168,76,0.25)`,
+          borderRadius: 4, overflow: "hidden", minWidth: 220, zIndex: 999,
+          boxShadow: "0 16px 48px rgba(0,0,0,0.5)",
+          animation: "fu 0.2s ease both",
+        }}>
+          {NAV_ITEMS.map((it, i) => (
+            <button key={it.id}
+              onClick={() => { onNavigate(it.id); setOpen(false); }}
+              style={{
+                display: "block", width: "100%", textAlign: "left",
+                background: "none", border: "none",
+                borderBottom: i < NAV_ITEMS.length - 1 ? "1px solid rgba(201,168,76,0.1)" : "none",
+                color: "rgba(255,255,255,0.8)", padding: "16px 20px",
+                cursor: "pointer", fontFamily: "'Barlow', sans-serif",
+                fontSize: "0.9rem", fontWeight: 600, letterSpacing: "0.08em",
+                textTransform: "uppercase", transition: "all 0.2s",
+              }}
+              onMouseEnter={e => { e.target.style.background = "rgba(201,168,76,0.1)"; e.target.style.color = GOLD; }}
+              onMouseLeave={e => { e.target.style.background = "none"; e.target.style.color = "rgba(255,255,255,0.8)"; }}>
+              {it.l}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function Home({ onNavigate }) {
   const [sc, setSc] = useState(false);
