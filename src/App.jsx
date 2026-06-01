@@ -191,7 +191,7 @@ const DETAIL = {
 const CX = 450, CY = 360;
 
 const NODES = {
-  center:       { x: CX,  y: CY,  r: 82,  lines: ["ARCE", "MONSEGUR"], isCenter: true },
+  center:       { x: CX,  y: CY,  r: 105, lines: ["ARCE", "MONSEGUR"], isCenter: true },
   fci:          { x: 210, y: 190, r: 68,  lines: ["Fondos de", "Inversión"] },
   family:       { x: 140, y: 520, r: 68,  lines: ["Family", "Office"] },
   admin:        { x: 720, y: 355, r: 68,  lines: ["Administración", "de Propiedades"] },
@@ -226,7 +226,7 @@ function MapNode({ id, onNavigate }) {
   const fill = n.isCenter ? GOLD : hov ? "#22384f" : NAVY2;
   const tc   = n.isCenter ? NAVY : GOLD;
   const sc   = hov || n.isCenter ? GOLD : "rgba(201,168,76,0.45)";
-  const fs   = n.isSub ? 11.5 : n.isCenter ? 13.5 : 13;
+  const fs   = n.isSub ? 11.5 : n.isCenter ? 17 : 13;
   const lh   = fs + 4;
   const tot  = n.lines.length * lh;
 
@@ -246,15 +246,15 @@ function MapNode({ id, onNavigate }) {
       {n.isCenter && (
         <image
           href={LOGO_ICON}
-          x={n.x - 36} y={n.y - tot/2 - 74}
-          width={72} height={72}
+          x={n.x - 52} y={n.y - 62}
+          width={104} height={104}
           preserveAspectRatio="xMidYMid meet"
           style={{ pointerEvents: "none" }}
         />
       )}
       {n.lines.map((line, i) => (
         <text key={i}
-          x={n.x} y={n.y - tot / 2 + i * lh + lh * 0.65 + (n.isCenter ? 30 : 0)}
+          x={n.x} y={n.isCenter ? n.y + 52 + i * (fs + 3) : n.y - tot / 2 + i * lh + lh * 0.65}
           textAnchor="middle" dominantBaseline="middle"
           fill={tc} fontFamily="'Barlow Condensed', sans-serif"
           fontSize={fs} fontWeight="700" letterSpacing="0.05em"
