@@ -35,11 +35,11 @@ const DETAIL = {
     sub: "Martillero · Corredor Inmobiliario · Agente CNV",
     intro: `Profesional con formación dual en el mercado inmobiliario y el mercado de capitales. Combino la solidez técnica de la corredura matriculada con la visión financiera del asesor de inversiones, ofreciendo una perspectiva integral única en Argentina.\n\nMi filosofía: cada decisión inmobiliaria es también una decisión financiera. Con esa convicción guío a familias, inversores y empresas para maximizar su patrimonio con seguridad jurídica, transparencia y criterio técnico.`,
     credentials: [
-      { label: "Martillero público matriculado", desc: "Habilitado para remates judiciales, voluntarios y privados en todo el territorio nacional" },
-      { label: "Corredor inmobiliario matriculado", desc: "Intermediación profesional en compraventa, locación y tasación de bienes inmuebles" },
+      { label: "Lic. en Desarrollo de Negocios Inmobiliarios", desc: "Universidad Siglo 21 — estructuración, financiamiento y gestión de proyectos inmobiliarios" },
       { label: "Agente productor CNV registrado", desc: "Comisión Nacional de Valores — distribución de instrumentos del mercado de capitales" },
       { label: "Idóneo mercado de capitales", desc: "Acreditación para asesoramiento en inversiones, fondos y portfolios financieros" },
-      { label: "Lic. en Desarrollo de Negocios Inmobiliarios", desc: "Universidad Siglo 21 — estructuración, financiamiento y gestión de proyectos" },
+      { label: "Martillero público matriculado", desc: "Habilitado para remates judiciales, voluntarios y privados en todo el territorio nacional" },
+      { label: "Corredor inmobiliario matriculado", desc: "Intermediación profesional en compraventa, locación y tasación de bienes inmuebles" },
     ],
     stats: [
       { n: "+15 años", l: "de trayectoria en el mercado" },
@@ -50,12 +50,13 @@ const DETAIL = {
     vmo: [
       { icon: "◎", title: "Visión", body: "Ser la firma de referencia en Argentina para inversores que buscan integrar el mercado inmobiliario con el mercado de capitales, reconocidos por calidad técnica, transparencia y creación sostenida de valor patrimonial." },
       { icon: "◈", title: "Misión", body: "Brindar asesoramiento integral y estratégico en real estate e inversiones financieras, combinando las credenciales de corredor inmobiliario matriculado y agente CNV para ofrecer soluciones a medida con seguridad jurídica." },
-      { icon: "◇", title: "Objetivos", body: "• Consolidar un fondo inmobiliario de USD 500K+ a corto plazo\n• Escalar la cartera de administración a 50+ unidades\n• Desarrollar Family Office para 10+ familias patrimoniales\n• Posicionarse como referente en estructuración de fideicomisos en NOA y CABA" },
+      { icon: "◇", title: "Objetivos", body: "• Consolidar un fondo inmobiliario de USD 3M+ a corto plazo\n• Escalar la cartera de administración a 50+ unidades\n• Desarrollar Family Office para 5+ familias patrimoniales" },
     ],
     re_blocks: [
+      { title: "Una decisión financiera y un proyecto de vida", body: "Invertir en real estate no es solo una decisión financiera — es construir un patrimonio que trasciende generaciones. Cada propiedad es un activo tangible que preserva valor, genera renta y forma parte de un proyecto de vida concreto." },
       { title: "Por qué Real Estate", body: "En Argentina, el ladrillo es el refugio de valor por excelencia. En contextos de alta inflación y volatilidad cambiaria, los inmuebles ofrecen preservación de capital en dólares, generación de renta y revalorización estructural." },
       { title: "El valor de lo financiero", body: "Integrar instrumentos del mercado de capitales — bonos, CEDEARs, ON — permite diversificar, generar liquidez y capturar oportunidades que el ladrillo solo no ofrece. La combinación es la clave de un portafolio robusto." },
-      { title: "Oportunidades únicas", body: "Argentina presenta una de las mayores brechas del mundo entre el valor de los inmuebles y su costo de construcción. Las subastas judiciales, el flipping estratégico y los desarrollos en pozo generan retornos imposibles en mercados maduros." },
+      { title: "El mercado argentino como oportunidad", body: "Argentina ofrece oportunidades únicas para el inversor informado: subastas judiciales con descuentos significativos sobre valor de mercado, desarrollos en pozo con upside de valorización, y operaciones de flipping estratégico con retornos muy superiores a los de mercados maduros." },
       { title: "Fideicomiso como herramienta", body: "El fideicomiso es la estructura legal más eficiente para inversiones colectivas e individuales: separa el patrimonio, protege al inversor, facilita la transmisión y optimiza la carga fiscal bajo el marco argentino vigente." },
     ],
     trust: [
@@ -181,7 +182,7 @@ const DETAIL = {
       { label: "Administración de alquileres", value: "Cobro de rentas, indexación ICL/CER, renovaciones y garantías" },
       { label: "Asesoramiento financiero", value: "Estructuración de financiamiento y créditos hipotecarios" },
     ],
-    highlight: { label: "Comisión estándar", value: "3% + IVA por parte", sub: "Compraventa · Negociable en operaciones de volumen" },
+
   },
 };
 
@@ -190,7 +191,7 @@ const DETAIL = {
 const CX = 450, CY = 360;
 
 const NODES = {
-  center:       { x: CX,  y: CY,  r: 82,  lines: ["GRUPO", "ARCE", "MONSEGUR"], isCenter: true },
+  center:       { x: CX,  y: CY,  r: 82,  lines: ["ARCE", "MONSEGUR"], isCenter: true },
   fci:          { x: 210, y: 190, r: 68,  lines: ["Fondos de", "Inversión"] },
   family:       { x: 140, y: 520, r: 68,  lines: ["Family", "Office"] },
   admin:        { x: 720, y: 355, r: 68,  lines: ["Administración", "de Propiedades"] },
@@ -198,7 +199,7 @@ const NODES = {
   fci_re:       { x: 90,  y: 75,  r: 52,  lines: ["Fondo", "Real Estate"],                isSub: true },
   fci_fin:      { x: 310, y: 75,  r: 52,  lines: ["Fondo", "Financiero"],                 isSub: true },
   admin_temp:   { x: 820, y: 185, r: 52,  lines: ["Alquileres", "Temporales", "(Airbnb)"], isSub: true },
-  propiedades:  { x: 880, y: 68,  r: 48,  lines: ["Propiedades", "Disponibles"], isSub: true, isSub2: true },
+  propiedades:  { x: 310, y: 185, r: 48,  lines: ["Propiedades", "Disponibles"], isSub: true, isSub2: true },
   admin_cv:     { x: 820, y: 525, r: 52,  lines: ["Refacciones", "y Mantenimiento"],    isSub: true },
 };
 
