@@ -494,20 +494,41 @@ function GenericPage({ pageId, onBack, onNavigate }) {
               style={{ textDecoration: "none", display: "block", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(201,168,76,0.2)", overflow: "hidden", transition: "transform 0.3s, box-shadow 0.3s", borderRadius: 4 }}
               onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 16px 48px rgba(0,0,0,0.3)"; }}
               onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "none"; }}>
-              <div style={{ position: "relative", height: 220, overflow: "hidden" }}>
-                <img src={prop.image} alt={prop.name}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
-                <div style={{ position: "absolute", top: 12, right: 12, background: "rgba(11,24,38,0.85)", padding: "4px 10px", borderRadius: 20, display: "flex", alignItems: "center", gap: 4 }}>
-                  <span style={{ color: GOLD, fontSize: "0.8rem" }}>★</span>
-                  <span style={{ color: "white", fontSize: "0.8rem", fontWeight: 600 }}>{prop.rating}</span>
-                </div>
+              {/* Image or placeholder */}
+              <div style={{ position: "relative", height: 210, overflow: "hidden", background: "#0d1e30" }}>
+                {prop.image ? (
+                  <img src={prop.image} alt={prop.name} style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
+                ) : (
+                  <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span style={{ color: "rgba(201,168,76,0.3)", fontSize: "2rem" }}>🏠</span>
+                  </div>
+                )}
+                {/* Tag badge */}
+                {prop.tag && (
+                  <div style={{ position: "absolute", top: 12, left: 12, background: GOLD, color: NAVY, padding: "3px 10px", fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.1em" }}>
+                    {prop.tag}
+                  </div>
+                )}
+                {/* Rating badge for Airbnb */}
+                {prop.rating && (
+                  <div style={{ position: "absolute", top: 12, right: 12, background: "rgba(11,24,38,0.85)", padding: "4px 10px", borderRadius: 20, display: "flex", alignItems: "center", gap: 4 }}>
+                    <span style={{ color: GOLD, fontSize: "0.8rem" }}>★</span>
+                    <span style={{ color: "white", fontSize: "0.8rem", fontWeight: 600 }}>{prop.rating}</span>
+                  </div>
+                )}
               </div>
               <div style={{ padding: "20px 22px" }}>
-                <div style={{ color: GOLD, fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 8 }}>{prop.location}</div>
-                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.15rem", fontWeight: 700, color: "white", marginBottom: 8, lineHeight: 1.2 }}>{prop.name}</div>
-                <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.82rem", marginBottom: 16 }}>{prop.details}</div>
+                <div style={{ color: GOLD, fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 7 }}>{prop.location}</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.15rem", fontWeight: 700, color: "white", marginBottom: 7, lineHeight: 1.2 }}>{prop.name}</div>
+                {prop.price && (
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.3rem", fontWeight: 800, color: GOLD, marginBottom: 7 }}>{prop.price}</div>
+                )}
+                <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.8rem", marginBottom: prop.desc ? 10 : 14 }}>{prop.details}</div>
+                {prop.desc && (
+                  <div style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.78rem", lineHeight: 1.6, marginBottom: 14, borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 10 }}>{prop.desc}</div>
+                )}
                 <div style={{ display: "flex", alignItems: "center", gap: 6, color: GOLD, fontSize: "0.8rem", fontWeight: 600 }}>
-                  <span>Ver en Airbnb</span>
+                  <span>{prop.tag ? "Ver en ZonaProp" : "Ver en Airbnb"}</span>
                   <span>→</span>
                 </div>
               </div>
