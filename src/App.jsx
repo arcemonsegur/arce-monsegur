@@ -476,7 +476,7 @@ function GenericPage({ pageId, onBack, onNavigate }) {
       {d.proximamente && (
         <div style={{ background: "rgba(201,168,76,0.12)", border: "2px solid rgba(201,168,76,0.5)", padding: "32px 40px", marginBottom: 48, display: "inline-flex", flexDirection: "column", gap: 8, borderRadius: 4 }}>
           <span style={{ fontSize: "2.5rem" }}>🚧</span>
-          <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "2rem", fontWeight: 800, color: GOLD, letterSpacing: "0.1em" }}>PRÓXIMAMENTE</span>
+          <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "2rem", fontWeight: 800, color: GOLD, letterSpacing: "0.1em" }}>COMING SOON</span>
           <span style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.9rem" }}>Este fondo está en proceso de estructuración. Contactanos para más información.</span>
         </div>
       )}
