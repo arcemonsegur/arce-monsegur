@@ -189,7 +189,12 @@ const DETAIL = {
       { label: "Administración de alquileres", value: "Cobro de rentas, indexación ICL/CER, renovaciones y garantías" },
       { label: "Asesoramiento financiero", value: "Estructuración de financiamiento y créditos hipotecarios" },
     ],
-
+    propCards: [
+      { name: "Oficina Premium en Palermo — 54 m² con Amenities", location: "Godoy Cruz 1653, Palermo", price: "USD 670 + IVA / mes", tag: "ALQUILER COMERCIAL", details: "54 m² · Baño privado · Kitchenette · Aire acondicionado", desc: "Edificio Espacio Godoy. Planta versátil y luminosa. Amenities: sala de reuniones, cocina común, terraza y seguridad privada.", image: "", link: "https://www.zonaprop.com.ar/propiedades/clasificado/alclocin-oficina-premium-en-palermo-54-m-sup2--con-amenities-58901750.html" },
+      { name: "Palermo Soho — 4 Ambientes Reciclado a Nuevo", location: "Uriarte 2456, Palermo Soho", price: "USD 177.000", tag: "VENTA · APTO CRÉDITO", details: "72 m² · 4 amb. · 3 dorm. · 2 baños · Piso 6", desc: "Reciclado integral con materiales de primera línea. Silencioso y privado, con dos balcones internos. Posibilidad de financiación privada.", image: "", link: "https://www.zonaprop.com.ar/propiedades/clasificado/veclapin-palermo-soho-4-ambientes-reciclado-integralmente-a-58617054.html" },
+      { name: "Depto a Estrenar con Balcón Corrido — Chacarita/Palermo", location: "Carranza 1284, Chacarita/Palermo", price: "USD 124.000", tag: "VENTA · A ESTRENAR", details: "46 m² tot. · 37 m² cub. · 2 amb. · 1 dorm. · Balcón corrido", desc: "Piso 2° al frente, muy luminoso. Gimnasio, SUM, terraza, parrilla, jacuzzi y laundry. Zona de alta revalorización.", image: "", link: "https://www.zonaprop.com.ar/propiedades/clasificado/veclapin-departamento-a-estrenar-frente-con-balcon-corrido-58170020.html" },
+      { name: "Depto en Alquiler con Terraza Privada y Parrilla", location: "Malabia 1350, Palermo Soho", price: "USD 1.200 / mes", tag: "ALQUILER", details: "88 m² tot. · 44 m² cub. · 2 amb. · 1 dorm. · Terraza privada con parrilla", desc: "A pasos de Plaza Serrano. Terraza con pérgola y parrilla propia. Edificio con pileta, SUM y laundry. Muy luminoso.", image: "", link: "https://www.zonaprop.com.ar/propiedades/clasificado/alclapin-depto-en-alquiler-con-terraza-privada-y-parrilla-a-59127922.html" },
+    ],
   },
 };
 
