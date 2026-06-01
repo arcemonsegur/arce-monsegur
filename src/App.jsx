@@ -166,9 +166,16 @@ const DETAIL = {
   propiedades: {
     badge: "Alquileres Temporales",
     headline: "Propiedades Disponibles",
-    body: "Estas son las propiedades que administramos en Airbnb y plataformas de alquiler temporal. Podés ver la disponibilidad y reservar directamente haciendo clic en cada propiedad.",
-    items: [
-      { label: "📍 Próximamente", value: "Las propiedades disponibles se mostrarán aquí muy pronto." },
+    body: "Administramos estas propiedades en Airbnb y plataformas de alquiler temporal. Hacé clic en cada una para ver disponibilidad y reservar.",
+    propCards: [
+      {
+        name: "Amplio depto. en Palermo Soho con terraza privada",
+        location: "Palermo Soho, Buenos Aires",
+        rating: "4.92",
+        details: "1 dorm. · 2 camas · 1.5 baños",
+        image: "https://a0.muscache.com/im/pictures/hosting/Hosting-779881000813521625/original/6c1bc39d-ef74-491b-976a-43a8c27f771a.jpeg?im_w=720",
+        link: "https://www.airbnb.com.ar/rooms/779881000813521625",
+      },
     ],
   },
   compraventa: {
@@ -479,6 +486,34 @@ function GenericPage({ pageId, onBack, onNavigate }) {
         <Grid>
           {d.items.map((item, i) => <Block key={i} title={item.label} value={item.value}/>)}
         </Grid>
+      )}
+      {d.propCards && (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24, marginBottom: 48 }}>
+          {d.propCards.map((prop, i) => (
+            <a key={i} href={prop.link} target="_blank" rel="noopener noreferrer"
+              style={{ textDecoration: "none", display: "block", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(201,168,76,0.2)", overflow: "hidden", transition: "transform 0.3s, box-shadow 0.3s", borderRadius: 4 }}
+              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 16px 48px rgba(0,0,0,0.3)"; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "none"; }}>
+              <div style={{ position: "relative", height: 220, overflow: "hidden" }}>
+                <img src={prop.image} alt={prop.name}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
+                <div style={{ position: "absolute", top: 12, right: 12, background: "rgba(11,24,38,0.85)", padding: "4px 10px", borderRadius: 20, display: "flex", alignItems: "center", gap: 4 }}>
+                  <span style={{ color: GOLD, fontSize: "0.8rem" }}>★</span>
+                  <span style={{ color: "white", fontSize: "0.8rem", fontWeight: 600 }}>{prop.rating}</span>
+                </div>
+              </div>
+              <div style={{ padding: "20px 22px" }}>
+                <div style={{ color: GOLD, fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 8 }}>{prop.location}</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.15rem", fontWeight: 700, color: "white", marginBottom: 8, lineHeight: 1.2 }}>{prop.name}</div>
+                <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.82rem", marginBottom: 16 }}>{prop.details}</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, color: GOLD, fontSize: "0.8rem", fontWeight: 600 }}>
+                  <span>Ver en Airbnb</span>
+                  <span>→</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
       )}
       {d.children && d.children.length > 0 && (
         <div>
