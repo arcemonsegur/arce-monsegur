@@ -661,9 +661,11 @@ function Home({ onNavigate }) {
         ::-webkit-scrollbar-thumb { background:rgba(201,168,76,0.3); border-radius:3px; }
         .desktop-nav { display: flex; gap: 6px; }
         .ham-btn { display: none; }
+        .mobile-contacto { display: none; }
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
-          .ham-btn { display: flex !important; flex-direction: column; gap: 5px; align-items: center; justify-content: center; background: none; border: 1px solid rgba(201,168,76,0.35); padding: 8px 10px; cursor: pointer; border-radius: 3px; }
+          .ham-btn { display: none !important; }
+          .mobile-contacto { display: flex !important; }
         }
       `}</style>
 
