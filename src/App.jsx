@@ -675,11 +675,12 @@ function Home({ onNavigate }) {
             { id: "fci",    l: "Fondos de Inversión" },
             { id: "family", l: "Family Office" },
             { id: "admin",  l: "Propiedades" },
+            { id: "contacto", l: "Contacto" },
           ].map(it => (
             <button key={it.id} onClick={() => onNavigate(it.id)}
-              style={{ background: "none", border: "1px solid rgba(201,168,76,0.26)", color: "rgba(255,255,255,0.6)", padding: "6px 14px", cursor: "pointer", fontFamily: "'Barlow', sans-serif", fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", borderRadius: 2, transition: "all 0.2s" }}
-              onMouseEnter={e => { e.target.style.borderColor = GOLD; e.target.style.color = GOLD; }}
-              onMouseLeave={e => { e.target.style.borderColor = "rgba(201,168,76,0.26)"; e.target.style.color = "rgba(255,255,255,0.6)"; }}>
+              style={{ background: it.id === "contacto" ? GOLD : "none", border: `1px solid ${it.id === "contacto" ? GOLD : "rgba(201,168,76,0.26)"}`, color: it.id === "contacto" ? NAVY : "rgba(255,255,255,0.6)", padding: "6px 14px", cursor: "pointer", fontFamily: "'Barlow', sans-serif", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", borderRadius: 2, transition: "all 0.2s" }}
+              onMouseEnter={e => { if(it.id !== "contacto"){ e.target.style.borderColor = GOLD; e.target.style.color = GOLD; }}}
+              onMouseLeave={e => { if(it.id !== "contacto"){ e.target.style.borderColor = "rgba(201,168,76,0.26)"; e.target.style.color = "rgba(255,255,255,0.6)"; }}}>
               {it.l}
             </button>
           ))}
@@ -740,6 +741,98 @@ function Home({ onNavigate }) {
 
 // ─── ROOT ─────────────────────────────────────────────────────────────────────
 
+
+function ContactPage({ onBack }) {
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ nombre: "", email: "", telefono: "", mensaje: "" });
+
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSend = () => {
+    if (!form.nombre || !form.email || !form.mensaje) return;
+    // Build mailto link
+    const subject = encodeURIComponent(`Consulta de ${form.nombre} — Arce Monsegur`);
+    const body = encodeURIComponent(`Nombre: ${form.nombre}\nEmail: ${form.email}\nTeléfono: ${form.telefono}\n\nMensaje:\n${form.mensaje}`);
+    window.open(`mailto:info@arcemonsegur.com?subject=${subject}&body=${body}`);
+    setSent(true);
+  };
+
+  return (
+    <Shell onBack={onBack} badge="Contacto" headline="Hablemos">
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(300px,100%), 1fr))", gap: 60, marginBottom: 60 }}>
+        {/* Info */}
+        <div>
+          <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.96rem", lineHeight: 1.85, marginBottom: 40 }}>
+            Estamos disponibles para asesorarte en inversiones inmobiliarias, fondos, administración de propiedades y asesoramiento patrimonial. Dejanos tu mensaje y te contactamos a la brevedad.
+          </p>
+          {[
+            { icon: "✉", label: "Email", value: "info@arcemonsegur.com", link: "mailto:info@arcemonsegur.com" },
+            { icon: "📱", label: "Teléfono / WhatsApp", value: "+54 11 5759 4747", link: "tel:+541157594747" },
+            { icon: "📷", label: "Instagram", value: "@arce.monsegur", link: "https://instagram.com/arce.monsegur" },
+            { icon: "💼", label: "LinkedIn", value: "Arce Monsegur", link: "https://linkedin.com/in/arce-monsegur" },
+          ].map((item, i) => (
+            <a key={i} href={item.link} target="_blank" rel="noopener noreferrer"
+              style={{ display: "flex", alignItems: "flex-start", gap: 16, marginBottom: 22, textDecoration: "none" }}
+              onMouseEnter={e => e.currentTarget.querySelector('.cval').style.color = GOLD}
+              onMouseLeave={e => e.currentTarget.querySelector('.cval').style.color = "rgba(255,255,255,0.8)"}>
+              <div style={{ width: 42, height: 42, background: "rgba(201,168,76,0.12)", border: `1px solid rgba(201,168,76,0.25)`, borderRadius: 2, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0 }}>
+                {item.icon}
+              </div>
+              <div>
+                <div style={{ color: GOLD, fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 3 }}>{item.label}</div>
+                <div className="cval" style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.9rem", transition: "color 0.2s" }}>{item.value}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* Form */}
+        <div>
+          {sent ? (
+            <div style={{ background: "rgba(201,168,76,0.1)", border: `1px solid rgba(201,168,76,0.3)`, padding: "40px 32px", textAlign: "center" }}>
+              <div style={{ fontSize: "2.5rem", marginBottom: 16 }}>✓</div>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.6rem", fontWeight: 800, color: "white", marginBottom: 12 }}>¡Mensaje enviado!</div>
+              <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem" }}>Te contactaremos a la brevedad.</div>
+            </div>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              {[
+                { name: "nombre", label: "Nombre *", placeholder: "Tu nombre completo", type: "text" },
+                { name: "email", label: "Email *", placeholder: "tu@email.com", type: "email" },
+                { name: "telefono", label: "Teléfono", placeholder: "+54 11...", type: "tel" },
+              ].map(f => (
+                <div key={f.name} style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+                  <label style={{ color: GOLD, fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>{f.label}</label>
+                  <input type={f.type} name={f.name} value={form[f.name]} onChange={handleChange}
+                    placeholder={f.placeholder}
+                    style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)", color: "white", padding: "13px 16px", fontFamily: "'Barlow', sans-serif", fontSize: "0.9rem", borderRadius: 2, outline: "none", width: "100%" }}
+                    onFocus={e => e.target.style.borderColor = GOLD}
+                    onBlur={e => e.target.style.borderColor = "rgba(255,255,255,0.12)"}/>
+                </div>
+              ))}
+              <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+                <label style={{ color: GOLD, fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Mensaje *</label>
+                <textarea name="mensaje" value={form.mensaje} onChange={handleChange}
+                  placeholder="Contanos en qué podemos ayudarte..."
+                  rows={5}
+                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)", color: "white", padding: "13px 16px", fontFamily: "'Barlow', sans-serif", fontSize: "0.9rem", borderRadius: 2, outline: "none", width: "100%", resize: "vertical" }}
+                  onFocus={e => e.target.style.borderColor = GOLD}
+                  onBlur={e => e.target.style.borderColor = "rgba(255,255,255,0.12)"}/>
+              </div>
+              <button onClick={handleSend}
+                style={{ background: GOLD, color: NAVY, padding: "14px 32px", fontSize: "0.82rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", border: "none", borderRadius: 2, cursor: "pointer", marginTop: 8, fontFamily: "'Barlow', sans-serif", transition: "background 0.3s" }}
+                onMouseEnter={e => e.target.style.background = "#e0c47a"}
+                onMouseLeave={e => e.target.style.background = GOLD}>
+                Enviar mensaje →
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </Shell>
+  );
+}
+
 export default function App() {
   const [page, setPage] = useState("home");
   const [hist, setHist] = useState([]);
@@ -756,7 +849,8 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (page === "home")   return <Home onNavigate={go}/>;
-  if (page === "center") return <CenterPage onBack={back}/>;
+  if (page === "home")     return <Home onNavigate={go}/>;
+  if (page === "center")   return <CenterPage onBack={back}/>;
+  if (page === "contacto") return <ContactPage onBack={back}/>;
   return <GenericPage pageId={page} onBack={back} onNavigate={go}/>;
 }
