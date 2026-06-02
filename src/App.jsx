@@ -151,7 +151,9 @@ const DETAIL = {
   admin_temp: {
     badge: "Short-Term Rentals",
     headline: "Alquileres Temporales (Airbnb)",
-    body: "Gestionamos propiedades en Airbnb, Booking y plataformas turísticas similares. El propietario solo recibe su rendición mensual; nosotros nos ocupamos de todo.\n\nEstructura de fideicomiso de administración: Arce Monsegur como fiduciario, el propietario como beneficiario — transparencia total garantizada.",
+    superhost: true,
+    airbnbProfile: "https://www.airbnb.com.ar/p/arcemonsegur",
+    body: "Gestionamos propiedades en Airbnb, Booking y plataformas turísticas similares con el respaldo de años de experiencia y la distinción de Superhost — el reconocimiento más alto que otorga Airbnb a los anfitriones con mayor compromiso, calidad y satisfacción de huéspedes.\n\nEl propietario solo recibe su rendición mensual; nosotros nos ocupamos de todo el proceso operativo para maximizar la rentabilidad de cada unidad.",
     items: [
       { label: "Publicación profesional", value: "Fotos, copywriting, gestión de reseñas y posicionamiento SEO" },
       { label: "Pricing dinámico", value: "Ajuste de tarifas por demanda, eventos, feriados y estacionalidad" },
@@ -159,7 +161,6 @@ const DETAIL = {
       { label: "Mantenimiento preventivo", value: "Coordinación de reparaciones para mantener el estándar de la unidad" },
       { label: "Rendición mensual", value: "Ingresos brutos, gastos detallados y neto transferido al propietario" },
     ],
-    highlight: { label: "Honorario fiduciario", value: "20–25% del ingreso bruto", sub: "Todo incluido · Sin costos ocultos · Transferencia mensual" },
   },
   admin_cv: {
     badge: "Mantenimiento & Refacciones",
@@ -489,6 +490,30 @@ function GenericPage({ pageId, onBack, onNavigate }) {
   if (!d) return null;
   return (
     <Shell onBack={onBack} badge={d.badge} headline={d.headline}>
+      {d.superhost && (
+        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 32, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(255,56,92,0.12)", border: "1.5px solid rgba(255,56,92,0.4)", padding: "10px 20px", borderRadius: 4 }}>
+            <span style={{ fontSize: "1.4rem" }}>🏆</span>
+            <div>
+              <div style={{ color: "#ff385c", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Superhost</div>
+              <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.78rem" }}>Reconocimiento Airbnb al anfitrión de excelencia</div>
+            </div>
+          </div>
+          {d.airbnbProfile && (
+            <a href={d.airbnbProfile} target="_blank" rel="noopener noreferrer"
+              style={{ display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.15)", padding: "10px 20px", borderRadius: 4, textDecoration: "none", transition: "all 0.2s" }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = GOLD; e.currentTarget.style.background = "rgba(201,168,76,0.1)"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)"; e.currentTarget.style.background = "rgba(255,255,255,0.06)"; }}>
+              <span style={{ fontSize: "1.2rem" }}>🏠</span>
+              <div>
+                <div style={{ color: GOLD, fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>Ver mi perfil en Airbnb</div>
+                <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.75rem" }}>Reseñas · Anuncios · Calificaciones</div>
+              </div>
+              <span style={{ color: GOLD, marginLeft: 4 }}>→</span>
+            </a>
+          )}
+        </div>
+      )}
       <p style={{ color: "rgba(255,255,255,0.63)", fontSize: "0.96rem", lineHeight: 1.88, maxWidth: 700, marginBottom: 44, whiteSpace: "pre-line" }}>
         {d.body}
       </p>
