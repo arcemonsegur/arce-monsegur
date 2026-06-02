@@ -671,11 +671,11 @@ function Home({ onNavigate }) {
         </button>
         <div className="mobile-hide" style={{ display: "flex", gap: 6 }}>
           {[
+            { id: "contacto", l: "Contacto" },
             { id: "center", l: "Nosotros" },
             { id: "fci",    l: "Fondos de Inversión" },
             { id: "family", l: "Family Office" },
             { id: "admin",  l: "Propiedades" },
-            { id: "contacto", l: "Contacto" },
           ].map(it => (
             <button key={it.id} onClick={() => onNavigate(it.id)}
               style={{ background: it.id === "contacto" ? GOLD : "none", border: `1px solid ${it.id === "contacto" ? GOLD : "rgba(201,168,76,0.26)"}`, color: it.id === "contacto" ? NAVY : "rgba(255,255,255,0.6)", padding: "6px 14px", cursor: "pointer", fontFamily: "'Barlow', sans-serif", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", borderRadius: 2, transition: "all 0.2s" }}
