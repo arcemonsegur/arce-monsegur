@@ -18,7 +18,30 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet" />
-  </head>
+    <style>
+    .desktop-nav { display: flex !important; gap: 6px; }
+    .mobile-contacto { display: none !important; }
+    .ham-btn { display: none !important; }
+    @media only screen and (max-width: 768px) {
+      .desktop-nav { display: none !important; }
+      .mobile-contacto {
+        display: flex !important;
+        align-items: center;
+        background: #c9a84c;
+        border: none;
+        color: #0b1826;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        border-radius: 2px;
+        font-family: 'Barlow', sans-serif;
+      }
+    }
+  </style>
+</head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
