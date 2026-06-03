@@ -730,22 +730,56 @@ function Home({ onNavigate }) {
           style={{ display: "flex", alignItems: "center", gap: 11, background: "none", border: "none", cursor: "pointer", padding: 0 }}>
           <LogoIcon size={44} color="white" useReal={true}/>
         </button>
-        <div className="desktop-nav">
-          {[
-            { id: "contacto", l: "Contacto" },
-            { id: "center", l: "Nosotros" },
-            { id: "fci",    l: "Fondos de Inversión" },
-            { id: "family", l: "Family Office" },
-            { id: "admin",  l: "Propiedades" },
-          ].map(it => (
-            <button key={it.id} onClick={() => onNavigate(it.id)}
-              style={{ background: it.id === "contacto" ? GOLD : "none", border: `1px solid ${it.id === "contacto" ? GOLD : "rgba(201,168,76,0.26)"}`, color: it.id === "contacto" ? NAVY : "rgba(255,255,255,0.6)", padding: "6px 14px", cursor: "pointer", fontFamily: "'Barlow', sans-serif", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", borderRadius: 2, transition: "all 0.2s" }}
-              onMouseEnter={e => { if(it.id !== "contacto"){ e.target.style.borderColor = GOLD; e.target.style.color = GOLD; }}}
-              onMouseLeave={e => { if(it.id !== "contacto"){ e.target.style.borderColor = "rgba(201,168,76,0.26)"; e.target.style.color = "rgba(255,255,255,0.6)"; }}}>
-              {it.l}
+        {/* Desktop nav */}
+        {!isMobile && (
+          <div style={{ display: "flex", gap: 6 }}>
+            {[
+              { id: "contacto", l: "Contacto" },
+              { id: "center", l: "Nosotros" },
+              { id: "fci", l: "Fondos de Inversión" },
+              { id: "family", l: "Family Office" },
+              { id: "admin", l: "Propiedades" },
+            ].map(it => (
+              <button key={it.id} onClick={() => onNavigate(it.id)}
+                style={{ background: it.id === "contacto" ? GOLD : "none", border: `1px solid ${it.id === "contacto" ? GOLD : "rgba(201,168,76,0.26)"}`, color: it.id === "contacto" ? NAVY : "rgba(255,255,255,0.6)", padding: "6px 14px", cursor: "pointer", fontFamily: FONT_SANS, fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", borderRadius: 2 }}>
+                {it.l}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Mobile nav */}
+        {isMobile && (
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <button onClick={() => onNavigate("contacto")}
+              style={{ background: GOLD, border: "none", color: NAVY, padding: "8px 14px", cursor: "pointer", fontFamily: FONT_SANS, fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", borderRadius: 2 }}>
+              Contacto
             </button>
-          ))}
-        </div>
+            <button onClick={() => setMenuOpen(m => !m)}
+              style={{ background: "none", border: `1px solid rgba(201,168,76,0.4)`, padding: "7px 9px", cursor: "pointer", borderRadius: 3, display: "flex", flexDirection: "column", gap: 5, alignItems: "center" }}>
+              <div style={{ width: 20, height: 2, background: menuOpen ? GOLD : "rgba(255,255,255,0.8)", transition: "all 0.3s", transform: menuOpen ? "rotate(45deg) translate(4px,4px)" : "none" }}/>
+              <div style={{ width: 20, height: 2, background: menuOpen ? "transparent" : "rgba(255,255,255,0.8)", transition: "opacity 0.2s" }}/>
+              <div style={{ width: 20, height: 2, background: menuOpen ? GOLD : "rgba(255,255,255,0.8)", transition: "all 0.3s", transform: menuOpen ? "rotate(-45deg) translate(4px,-4px)" : "none" }}/>
+            </button>
+          </div>
+        )}
+
+        {/* Mobile dropdown */}
+        {isMobile && menuOpen && (
+          <div style={{ position: "fixed", top: sc ? 48 : 56, left: 0, right: 0, background: "rgba(11,24,38,0.98)", backdropFilter: "blur(12px)", borderBottom: `1px solid rgba(201,168,76,0.2)`, zIndex: 999 }}>
+            {[
+              { id: "center", l: "Nosotros" },
+              { id: "fci", l: "Fondos de Inversión" },
+              { id: "family", l: "Family Office" },
+              { id: "admin", l: "Propiedades" },
+            ].map((it, i, arr) => (
+              <button key={it.id} onClick={() => { onNavigate(it.id); setMenuOpen(false); }}
+                style={{ display: "block", width: "100%", textAlign: "left", background: "none", border: "none", borderBottom: i < arr.length - 1 ? "1px solid rgba(201,168,76,0.1)" : "none", color: "rgba(255,255,255,0.9)", padding: "18px 20px", cursor: "pointer", fontFamily: FONT_SANS, fontSize: "1rem", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase" }}>
+                {it.l}
+              </button>
+            ))}
+          </div>
+        )}
       </nav>
 
       {/* Hero */}
