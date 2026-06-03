@@ -229,7 +229,10 @@ const DETAIL = {
       { label: "Obligaciones negociables (ON)", value: "Deuda corporativa en dólares con tasas atractivas y respaldo de empresas sólidas" },
       { label: "Cauciones y plazos fijos bursátiles", value: "Instrumentos de corto plazo para liquidez con rendimiento superior al plazo fijo tradicional" },
     ],
-    cta: { label: "Abrí tu cuenta en Balanz", url: "https://www.balanz.com/abrir-cuenta-2.aspx?reference=narcemonsegur@ap.balanz.com", sub: "Gratis · 100% online · Tu cuenta queda bajo mi gestión como agente CNV" },
+    ctas: [
+      { label: "🖱 Hacé clic aquí para abrir tu cuenta — Persona Física", url: "https://www.balanz.com/abrir-cuenta-2.aspx?reference=narcemonsegur@ap.balanz.com", sub: "Para personas físicas · Gratis · 100% online · Redirige a Balanz" },
+      { label: "🖱 Hacé clic aquí para abrir tu cuenta — Persona Jurídica", url: "https://www.balanz.com/abrir-cuenta-juridica.aspx?reference=narcemonsegur@ap.balanz.com", sub: "Para empresas y sociedades · Gratis · 100% online · Redirige a Balanz" },
+    ],
   },
   compraventa: {
     badge: "Intermediación Inmobiliaria",
@@ -568,6 +571,17 @@ function GenericPage({ pageId, onBack, onNavigate }) {
       <p style={{ color: "rgba(255,255,255,0.63)", fontSize: "0.96rem", lineHeight: 1.88, maxWidth: 700, marginBottom: 44, whiteSpace: "pre-line" }}>
         {d.body}
       </p>
+      {d.ctas && (
+        <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 48 }}>
+          {d.ctas.map((cta, i) => (
+            <a key={i} href={cta.url} target="_blank" rel="noopener noreferrer"
+              style={{ display: "flex", flexDirection: "column", gap: 6, background: i === 0 ? "#C9A96E" : "rgba(201,168,76,0.08)", border: "2px solid #C9A96E", padding: "20px 28px", borderRadius: 3, textDecoration: "none", flex: "1 1 220px", minWidth: 200 }}>
+              <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: "0.95rem", fontWeight: 700, color: i === 0 ? "#0b1826" : "#C9A96E" }}>{cta.label} →</span>
+              <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: "0.73rem", color: i === 0 ? "rgba(11,24,38,0.7)" : "rgba(201,168,76,0.65)" }}>{cta.sub}</span>
+            </a>
+          ))}
+        </div>
+      )}
       {d.proximamente && (
         <div style={{ background: "rgba(201,168,76,0.12)", border: "2px solid rgba(201,168,76,0.5)", padding: "32px 40px", marginBottom: 48, display: "inline-flex", flexDirection: "column", gap: 8, borderRadius: 4 }}>
           <span style={{ fontSize: "2.5rem" }}>🚧</span>
@@ -634,17 +648,6 @@ function GenericPage({ pageId, onBack, onNavigate }) {
               </div>
             </a>
           ))}
-        </div>
-      )}
-      {d.cta && (
-        <div style={{ marginBottom: 48 }}>
-          <a href={d.cta.url} target="_blank" rel="noopener noreferrer"
-            style={{ display: "inline-flex", flexDirection: "column", gap: 4, background: GOLD, padding: "18px 36px", borderRadius: 3, textDecoration: "none", transition: "background 0.3s" }}
-            onMouseEnter={e => e.currentTarget.style.background = "#d4b87a"}
-            onMouseLeave={e => e.currentTarget.style.background = GOLD}>
-            <span style={{ fontFamily: FONT_SERIF, fontSize: "1.1rem", fontWeight: 700, color: NAVY, letterSpacing: "0.02em" }}>{d.cta.label} →</span>
-            <span style={{ fontSize: "0.75rem", color: "rgba(11,24,38,0.65)" }}>{d.cta.sub}</span>
-          </a>
         </div>
       )}
       {d.children && d.children.length > 0 && (
