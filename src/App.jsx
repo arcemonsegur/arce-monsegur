@@ -223,7 +223,7 @@ const DETAIL = {
     body: "Como agente productor registrado ante la Comisión Nacional de Valores (CNV) y operador a través de Balanz Capital, uno de los brokers más importantes de Argentina, te damos acceso a todo el mercado de capitales local e internacional desde una sola cuenta.\n\nAbrí tu cuenta comitente en minutos y empezá a invertir en instrumentos que te permitan hacer crecer tu patrimonio con seguridad y transparencia.",
     items: [
       { label: "CEDEARs", value: "Invertí en las principales empresas del mundo (Apple, Google, Amazon) desde Argentina y en pesos o dólares" },
-      { label: "Bonos soberanos y corporativos", value: "Renta fija en ARS y USD con distintos perfiles de riesgo y plazos" },
+      { label: "Bonos soberanos y subsoberanos", value: "Renta fija en ARS y USD emitida por el Estado Nacional y provincias, con distintos perfiles de riesgo y plazos" },
       { label: "Acciones argentinas", value: "Participá del mercado local con las empresas líderes del país" },
       { label: "Fondos comunes de inversión", value: "Diversificación inmediata con gestión profesional desde montos mínimos" },
       { label: "Obligaciones negociables (ON)", value: "Deuda corporativa en dólares con tasas atractivas y respaldo de empresas sólidas" },
