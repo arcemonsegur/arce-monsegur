@@ -309,7 +309,8 @@ function MapNode({ id, onNavigate }) {
           x={n.x} y={n.isCenter ? n.y + 52 + i * (fs + 3) : n.y - tot / 2 + i * lh + lh * 0.65}
           textAnchor="middle" dominantBaseline="middle"
           fill={tc} fontFamily="'Barlow Condensed', sans-serif"
-          fontSize={fs} fontWeight="700" letterSpacing="0.05em"
+          fontSize={fs} fontWeight="700" letterSpacing="0.08em"
+          style={{ textTransform: "uppercase", pointerEvents: "none" }}
           style={{ pointerEvents: "none" }}>
           {line}
         </text>
