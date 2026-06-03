@@ -23,51 +23,6 @@ const PAGE_PHOTOS = {
 
 // ── Animated SVG backgrounds ─────────────────────────────────────────────────
 
-const SVG_FINANCE = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' preserveAspectRatio='xMidYMid slice'>
-  <rect width='800' height='400' fill='%230b1826'/>
-  <polyline points='0,320 80,280 160,300 240,220 320,240 400,160 480,180 560,100 640,120 720,60 800,80' 
-    fill='none' stroke='%23C9A96E' stroke-width='2' opacity='0.6'>
-    <animate attributeName='stroke-dashoffset' from='1000' to='0' dur='3s' repeatCount='indefinite'/>
-    <animateAttribute attributeName='stroke-dasharray' from='0,1000' to='1000,0' dur='3s' repeatCount='indefinite'/>
-  </polyline>
-  <polyline points='0,340 80,320 160,330 240,280 320,295 400,230 480,245 560,180 640,200 720,140 800,160' 
-    fill='none' stroke='%231a4a6b' stroke-width='1.5' opacity='0.5'>
-  </polyline>
-  <circle cx='400' cy='160' r='4' fill='%23C9A96E' opacity='0.8'/>
-  <circle cx='560' cy='100' r='4' fill='%23C9A96E' opacity='0.8'/>
-  <circle cx='720' cy='60' r='4' fill='%23C9A96E' opacity='0.8'/>
-  <line x1='0' y1='0' x2='0' y2='400' stroke='%23C9A96E' stroke-width='0.3' opacity='0.15' stroke-dasharray='8,8'/>
-  <line x1='160' y1='0' x2='160' y2='400' stroke='%23C9A96E' stroke-width='0.3' opacity='0.15' stroke-dasharray='8,8'/>
-  <line x1='320' y1='0' x2='320' y2='400' stroke='%23C9A96E' stroke-width='0.3' opacity='0.15' stroke-dasharray='8,8'/>
-  <line x1='480' y1='0' x2='480' y2='400' stroke='%23C9A96E' stroke-width='0.3' opacity='0.15' stroke-dasharray='8,8'/>
-  <line x1='640' y1='0' x2='640' y2='400' stroke='%23C9A96E' stroke-width='0.3' opacity='0.15' stroke-dasharray='8,8'/>
-  <line x1='800' y1='0' x2='800' y2='400' stroke='%23C9A96E' stroke-width='0.3' opacity='0.15' stroke-dasharray='8,8'/>
-  <line x1='0' y1='100' x2='800' y2='100' stroke='%23C9A96E' stroke-width='0.3' opacity='0.1' stroke-dasharray='8,8'/>
-  <line x1='0' y1='200' x2='800' y2='200' stroke='%23C9A96E' stroke-width='0.3' opacity='0.1' stroke-dasharray='8,8'/>
-  <line x1='0' y1='300' x2='800' y2='300' stroke='%23C9A96E' stroke-width='0.3' opacity='0.1' stroke-dasharray='8,8'/>
-</svg>`;
-
-const SVG_FAMILY = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' preserveAspectRatio='xMidYMid slice'>
-  <rect width='800' height='400' fill='%230b1826'/>
-  <circle cx='400' cy='200' r='280' fill='none' stroke='%23C9A96E' stroke-width='0.5' opacity='0.15'/>
-  <circle cx='400' cy='200' r='200' fill='none' stroke='%23C9A96E' stroke-width='0.5' opacity='0.12'/>
-  <circle cx='400' cy='200' r='120' fill='none' stroke='%23C9A96E' stroke-width='0.5' opacity='0.1'/>
-  <circle cx='400' cy='200' r='60' fill='%23C9A96E' opacity='0.04'/>
-  <polygon points='400,80 480,160 480,240 400,300 320,240 320,160' fill='none' stroke='%23C9A96E' stroke-width='0.8' opacity='0.2'/>
-  <polygon points='400,120 450,170 450,230 400,265 350,230 350,170' fill='none' stroke='%23C9A96E' stroke-width='0.6' opacity='0.15'/>
-  <line x1='200' y1='200' x2='600' y2='200' stroke='%23C9A96E' stroke-width='0.4' opacity='0.1'/>
-  <line x1='400' y1='50' x2='400' y2='350' stroke='%23C9A96E' stroke-width='0.4' opacity='0.1'/>
-  <circle cx='400' cy='200' r='8' fill='%23C9A96E' opacity='0.3'/>
-  <circle cx='250' cy='150' r='5' fill='%23C9A96E' opacity='0.2'/>
-  <circle cx='550' cy='150' r='5' fill='%23C9A96E' opacity='0.2'/>
-  <circle cx='250' cy='250' r='5' fill='%23C9A96E' opacity='0.2'/>
-  <circle cx='550' cy='250' r='5' fill='%23C9A96E' opacity='0.2'/>
-  <line x1='400' y1='200' x2='250' y2='150' stroke='%23C9A96E' stroke-width='0.5' opacity='0.15'/>
-  <line x1='400' y1='200' x2='550' y2='150' stroke='%23C9A96E' stroke-width='0.5' opacity='0.15'/>
-  <line x1='400' y1='200' x2='250' y2='250' stroke='%23C9A96E' stroke-width='0.5' opacity='0.15'/>
-  <line x1='400' y1='200' x2='550' y2='250' stroke='%23C9A96E' stroke-width='0.5' opacity='0.15'/>
-</svg>`;
-
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   useEffect(() => {
@@ -441,7 +396,7 @@ function MindMap({ onNavigate }) {
 
 // ─── SHARED UI COMPONENTS ────────────────────────────────────────────────────
 
-function Shell({ onBack, badge, headline, sub, children }) {
+function Shell({ onBack, badge, headline, sub, children, pageId }) {
   return (
     <div style={{ minHeight: "100vh", background: NAVY, fontFamily: "'Barlow', sans-serif" }}>
       <style>{`@keyframes fsi{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}`}</style>
@@ -466,10 +421,121 @@ function Shell({ onBack, badge, headline, sub, children }) {
       </div>
       {/* Hero photo/svg band */}
       <div style={{ position: "relative", height: 220, overflow: "hidden", marginBottom: 0 }}>
-        {badge === "Agente Productor CNV — Balanz" ? (
-          <div style={{ position: "absolute", inset: 0, backgroundImage: `url("data:image/svg+xml,${SVG_FINANCE}")`, backgroundSize: "cover", backgroundPosition: "center" }}/>
-        ) : badge === "Gestión Patrimonial Integral" ? (
-          <div style={{ position: "absolute", inset: 0, backgroundImage: `url("data:image/svg+xml,${SVG_FAMILY}")`, backgroundSize: "cover", backgroundPosition: "center" }}/>
+        {pageId === "mercado" ? (
+          <svg viewBox="0 0 800 220" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="lgMain" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#C9A96E" stopOpacity="0.45"/>
+                <stop offset="100%" stopColor="#C9A96E" stopOpacity="0.02"/>
+              </linearGradient>
+              <linearGradient id="lgBlue" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.35"/>
+                <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.02"/>
+              </linearGradient>
+              <linearGradient id="lgGreen" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#4ade80" stopOpacity="0.25"/>
+                <stop offset="100%" stopColor="#4ade80" stopOpacity="0.02"/>
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <rect width="800" height="220" fill="#071220"/>
+            {/* Grid lines */}
+            {[35,70,105,140,175].map(y => <line key={y} x1="0" y1={y} x2="800" y2={y} stroke="#C9A96E" strokeWidth="0.4" strokeDasharray="4,12" opacity="0.18"/>)}
+            {[100,200,300,400,500,600,700].map(x => <line key={x} x1={x} y1="0" x2={x} y2="220" stroke="#C9A96E" strokeWidth="0.4" strokeDasharray="4,12" opacity="0.12"/>)}
+            {/* Green area */}
+            <polygon points="0,205 100,195 200,198 300,185 400,175 500,160 600,155 700,140 800,132 800,220 0,220" fill="url(#lgGreen)"/>
+            <polyline points="0,205 100,195 200,198 300,185 400,175 500,160 600,155 700,140 800,132"
+              fill="none" stroke="#4ade80" strokeWidth="1.5" opacity="0.55" strokeLinecap="round" strokeLinejoin="round"/>
+            {/* Blue area */}
+            <polygon points="0,195 100,178 200,185 300,162 400,150 500,132 600,128 700,108 800,98 800,220 0,220" fill="url(#lgBlue)"/>
+            <polyline points="0,195 100,178 200,185 300,162 400,150 500,132 600,128 700,108 800,98"
+              fill="none" stroke="#38bdf8" strokeWidth="2" opacity="0.7" strokeLinecap="round" strokeLinejoin="round"/>
+            {/* Gold area */}
+            <polygon points="0,185 100,162 200,170 300,138 400,120 450,128 500,98 560,82 620,90 680,58 740,45 800,32 800,220 0,220" fill="url(#lgMain)"/>
+            {/* Main gold line with glow */}
+            <polyline points="0,185 100,162 200,170 300,138 400,120 450,128 500,98 560,82 620,90 680,58 740,45 800,32"
+              fill="none" stroke="#C9A96E" strokeWidth="1" opacity="0.3" strokeLinecap="round" strokeLinejoin="round" filter="url(#glow)"/>
+            <polyline points="0,185 100,162 200,170 300,138 400,120 450,128 500,98 560,82 620,90 680,58 740,45 800,32"
+              fill="none" stroke="#C9A96E" strokeWidth="2.8" opacity="0.95" strokeLinecap="round" strokeLinejoin="round"/>
+            {/* Candlesticks */}
+            {[
+              [60,158,168,162,172,true],[140,145,155,148,158,false],[220,132,142,135,145,true],
+              [300,118,128,122,132,true],[380,108,118,110,120,false],[460,95,108,98,108,true],
+              [540,78,90,82,92,true],[620,62,74,65,75,false],[700,48,60,50,62,true],[760,30,42,33,44,true]
+            ].map(([x,lo,hi,o,c,bull]) => (
+              <g key={x}>
+                <line x1={x} y1={lo-4} x2={x} y2={hi+4} stroke={bull?"#4ade80":"#f87171"} strokeWidth="1.2" opacity="0.8"/>
+                <rect x={x-5} y={Math.min(o,c)} width="10" height={Math.max(Math.abs(o-c),3)} fill={bull?"#4ade80":"#f87171"} opacity="0.85" rx="1"/>
+              </g>
+            ))}
+            {/* Highlight dots */}
+            {[[500,98],[680,58],[800,32]].map(([x,y]) => (
+              <g key={x}>
+                <circle cx={x} cy={y} r="8" fill="#C9A96E" opacity="0.15"/>
+                <circle cx={x} cy={y} r="5" fill="#0b1826" stroke="#C9A96E" strokeWidth="2"/>
+                <circle cx={x} cy={y} r="2.5" fill="#C9A96E"/>
+              </g>
+            ))}
+            {/* Volume bars */}
+            {[[60,22,true],[140,14,false],[220,28,true],[300,18,true],[380,12,false],[460,32,true],[540,25,true],[620,16,false],[700,38,true],[760,30,true]].map(([x,h,bull]) => (
+              <rect key={x} x={x-8} y={220-h} width="16" height={h} fill={bull?"#4ade80":"#f87171"} opacity="0.25" rx="1"/>
+            ))}
+            {/* Price label */}
+            <rect x="680" y="28" width="80" height="22" rx="3" fill="#C9A96E" opacity="0.9"/>
+            <text x="720" y="43" textAnchor="middle" fill="#0b1826" fontSize="10" fontWeight="700" fontFamily="monospace">+18.4%</text>
+          </svg>
+        ) : pageId === "family" ? (
+          <svg viewBox="0 0 800 220" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#C9A96E" stopOpacity="0.15"/>
+                <stop offset="100%" stopColor="#C9A96E" stopOpacity="0"/>
+              </radialGradient>
+              <radialGradient id="rg2" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#7A3B4A" stopOpacity="0.4"/>
+                <stop offset="100%" stopColor="#7A3B4A" stopOpacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="800" height="220" fill="#071220"/>
+            {/* Background glow */}
+            <ellipse cx="400" cy="110" rx="350" ry="130" fill="url(#rg2)"/>
+            <ellipse cx="400" cy="110" rx="200" ry="80" fill="url(#rg1)"/>
+            {/* Concentric circles */}
+            <circle cx="400" cy="110" r="160" fill="none" stroke="#C9A96E" strokeWidth="1" opacity="0.2"/>
+            <circle cx="400" cy="110" r="110" fill="none" stroke="#C9A96E" strokeWidth="0.8" opacity="0.25"/>
+            <circle cx="400" cy="110" r="65" fill="none" stroke="#C9A96E" strokeWidth="0.8" opacity="0.3"/>
+            {/* Connection lines */}
+            {[[180,55],[400,20],[620,55],[700,110],[620,165],[400,200],[180,165],[100,110]].map(([x,y],i,arr) => {
+              const next = arr[(i+1)%arr.length];
+              return <line key={i} x1={x} y1={y} x2={next[0]} y2={next[1]} stroke="#C9A96E" strokeWidth="0.8" opacity="0.25"/>;
+            })}
+            {/* Lines to center */}
+            {[[180,55],[400,20],[620,55],[700,110],[620,165],[400,200],[180,165],[100,110]].map(([x,y],i) => (
+              <line key={i} x1="400" y1="110" x2={x} y2={y} stroke="#C9A96E" strokeWidth="0.6" opacity="0.2"/>
+            ))}
+            {/* Outer nodes */}
+            {[[180,55],[400,20],[620,55],[700,110],[620,165],[400,200],[180,165],[100,110]].map(([x,y],i) => (
+              <g key={i}>
+                <circle cx={x} cy={y} r="10" fill="#7A3B4A" opacity="0.6"/>
+                <circle cx={x} cy={y} r="6" fill="#C9A96E" opacity="0.5"/>
+                <circle cx={x} cy={y} r="3" fill="white" opacity="0.8"/>
+              </g>
+            ))}
+            {/* Mid ring nodes */}
+            {[[280,58],[520,58],[660,110],[520,162],[280,162],[140,110]].map(([x,y],i) => (
+              <g key={i}>
+                <circle cx={x} cy={y} r="7" fill="#C9A96E" opacity="0.25"/>
+                <circle cx={x} cy={y} r="4" fill="#C9A96E" opacity="0.5"/>
+              </g>
+            ))}
+            {/* Center */}
+            <circle cx="400" cy="110" r="22" fill="#7A3B4A" opacity="0.7"/>
+            <circle cx="400" cy="110" r="14" fill="#C9A96E" opacity="0.6"/>
+            <circle cx="400" cy="110" r="7" fill="white" opacity="0.9"/>
+          </svg>
         ) : (
           <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${PAGE_PHOTOS[Object.keys(PAGE_PHOTOS).find(k => badge && DETAIL[k] && DETAIL[k].badge === badge) || "center"] || PAGE_PHOTOS.center})`, backgroundSize: "cover", backgroundPosition: "center" }}/>
         )}
@@ -597,7 +663,7 @@ function GenericPage({ pageId, onBack, onNavigate }) {
   const d = DETAIL[pageId];
   if (!d) return null;
   return (
-    <Shell onBack={onBack} badge={d.badge} headline={d.headline}>
+    <Shell onBack={onBack} badge={d.badge} headline={d.headline} pageId={pageId}>
       {d.superhost && (
         <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 32, flexWrap: "wrap" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(255,56,92,0.12)", border: "1.5px solid rgba(255,56,92,0.4)", padding: "10px 20px", borderRadius: 4 }}>
