@@ -266,14 +266,14 @@ const NODES = {
   center:       { x: CX,  y: CY,  r: 105, lines: ["ARCE", "MONSEGUR"], isCenter: true },
   fci:          { x: 210, y: 190, r: 80,  lines: ["Fondos de", "Inversión"] },
   family:       { x: 230, y: 525, r: 80,  lines: ["Family", "Office"] },
-  mercado:      { x: 120, y: 355, r: 75,  lines: ["Mercado de", "Capitales"] },
+  mercado:      { x: 120, y: 355, r: 86,  lines: ["Mercado de", "Capitales"] },
   admin:        { x: 720, y: 355, r: 80,  lines: ["Administración", "de Propiedades"] },
   compraventa:  { x: 580, y: 528, r: 74,  lines: ["Propiedades en", "Venta y Alq."], isSub: true },
   fci_re:       { x: 90,  y: 75,  r: 52,  lines: ["Fondo", "Real Estate"],                isSub: true },
   fci_fin:      { x: 310, y: 75,  r: 52,  lines: ["Fondo", "Financiero"],                 isSub: true },
   admin_temp:   { x: 600, y: 210, r: 64,  lines: ["Alquileres", "Temporales", "(Airbnb)"], isSub: true },
-  propiedades:  { x: 780, y: 90,  r: 68,  lines: ["Propiedades", "Disponibles"], isSub: true },
-  admin_cv:     { x: 820, y: 525, r: 64,  lines: ["Refacciones", "y Mantenimiento"],    isSub: true },
+  propiedades:  { x: 720, y: 90,  r: 68,  lines: ["Propiedades", "Disponibles"], isSub: true },
+  admin_cv:     { x: 790, y: 560, r: 72,  lines: ["Refacciones", "y Mantenimiento"],    isSub: true },
 };
 
 const CONNECTIONS = [
