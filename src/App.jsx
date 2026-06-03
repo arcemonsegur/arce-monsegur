@@ -217,6 +217,20 @@ const DETAIL = {
       { name: "Elegante apartamento tipo hotel", location: "Vicente López, Buenos Aires", rating: "4.78", details: "1 dorm. · 1 cama · 1 baño · Frente a Plaza Vicente López", image: "https://a0.muscache.com/im/pictures/miso/Hosting-1116025176878641665/original/92d65c98-6a51-4480-9f06-18ee658d26b9.jpeg?im_w=720", link: "https://www.airbnb.com.ar/rooms/1116025176878641665" },
     ],
   },
+  mercado: {
+    badge: "Agente Productor CNV — Balanz",
+    headline: "Mercado de Capitales",
+    body: "Como agente productor registrado ante la Comisión Nacional de Valores (CNV) y operador a través de Balanz Capital, uno de los brokers más importantes de Argentina, te damos acceso a todo el mercado de capitales local e internacional desde una sola cuenta.\n\nAbrí tu cuenta comitente en minutos y empezá a invertir en instrumentos que te permitan hacer crecer tu patrimonio con seguridad y transparencia.",
+    items: [
+      { label: "CEDEARs", value: "Invertí en las principales empresas del mundo (Apple, Google, Amazon) desde Argentina y en pesos o dólares" },
+      { label: "Bonos soberanos y corporativos", value: "Renta fija en ARS y USD con distintos perfiles de riesgo y plazos" },
+      { label: "Acciones argentinas", value: "Participá del mercado local con las empresas líderes del país" },
+      { label: "Fondos comunes de inversión", value: "Diversificación inmediata con gestión profesional desde montos mínimos" },
+      { label: "Obligaciones negociables (ON)", value: "Deuda corporativa en dólares con tasas atractivas y respaldo de empresas sólidas" },
+      { label: "Cauciones y plazos fijos bursátiles", value: "Instrumentos de corto plazo para liquidez con rendimiento superior al plazo fijo tradicional" },
+    ],
+    cta: { label: "Abrí tu cuenta en Balanz", url: "https://www.balanz.com/abrir-cuenta-2.aspx?reference=narcemonsegur@ap.balanz.com", sub: "Gratis · 100% online · Tu cuenta queda bajo mi gestión como agente CNV" },
+  },
   compraventa: {
     badge: "Intermediación Inmobiliaria",
     headline: "Propiedades en Venta y Alquileres",
@@ -244,7 +258,8 @@ const CX = 450, CY = 360;
 const NODES = {
   center:       { x: CX,  y: CY,  r: 105, lines: ["ARCE", "MONSEGUR"], isCenter: true },
   fci:          { x: 210, y: 190, r: 80,  lines: ["Fondos de", "Inversión"] },
-  family:       { x: 167, y: 506, r: 80,  lines: ["Family", "Office"] },
+  family:       { x: 230, y: 525, r: 80,  lines: ["Family", "Office"] },
+  mercado:      { x: 120, y: 355, r: 75,  lines: ["Mercado de", "Capitales"] },
   admin:        { x: 720, y: 355, r: 80,  lines: ["Administración", "de Propiedades"] },
   compraventa:  { x: 580, y: 528, r: 74,  lines: ["Propiedades en", "Venta y Alq."], isSub: true },
   fci_re:       { x: 90,  y: 75,  r: 52,  lines: ["Fondo", "Real Estate"],                isSub: true },
@@ -255,7 +270,7 @@ const NODES = {
 };
 
 const CONNECTIONS = [
-  ["center", "fci"], ["center", "family"], ["center", "admin"],
+  ["center", "fci"], ["center", "family"], ["center", "admin"], ["center", "mercado"],
   ["fci", "fci_re"], ["fci", "fci_fin"],
   ["admin", "admin_temp"], ["admin", "admin_cv"], ["admin", "compraventa"], ["admin_temp", "propiedades"],
 ];
@@ -619,6 +634,17 @@ function GenericPage({ pageId, onBack, onNavigate }) {
               </div>
             </a>
           ))}
+        </div>
+      )}
+      {d.cta && (
+        <div style={{ marginBottom: 48 }}>
+          <a href={d.cta.url} target="_blank" rel="noopener noreferrer"
+            style={{ display: "inline-flex", flexDirection: "column", gap: 4, background: GOLD, padding: "18px 36px", borderRadius: 3, textDecoration: "none", transition: "background 0.3s" }}
+            onMouseEnter={e => e.currentTarget.style.background = "#d4b87a"}
+            onMouseLeave={e => e.currentTarget.style.background = GOLD}>
+            <span style={{ fontFamily: FONT_SERIF, fontSize: "1.1rem", fontWeight: 700, color: NAVY, letterSpacing: "0.02em" }}>{d.cta.label} →</span>
+            <span style={{ fontSize: "0.75rem", color: "rgba(11,24,38,0.65)" }}>{d.cta.sub}</span>
+          </a>
         </div>
       )}
       {d.children && d.children.length > 0 && (
