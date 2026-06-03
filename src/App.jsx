@@ -10,15 +10,64 @@ const PAGE_PHOTOS = {
   fci: "https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=1600",
   fci_re: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1600",
   fci_fin: "https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  family: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  family: null,
   admin: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1600",
   admin_temp: "https://images.pexels.com/photos/1648776/pexels-photo-1648776.jpeg?auto=compress&cs=tinysrgb&w=1600",
   admin_cv: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1600",
   propiedades: "https://images.pexels.com/photos/1648776/pexels-photo-1648776.jpeg?auto=compress&cs=tinysrgb&w=1600",
   compraventa: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  mercado: null,
   refacciones: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1600",
   contacto: "https://images.pexels.com/photos/1486325/pexels-photo-1486325.jpeg?auto=compress&cs=tinysrgb&w=1600",
 };
+
+// ── Animated SVG backgrounds ─────────────────────────────────────────────────
+
+const SVG_FINANCE = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' preserveAspectRatio='xMidYMid slice'>
+  <rect width='800' height='400' fill='%230b1826'/>
+  <polyline points='0,320 80,280 160,300 240,220 320,240 400,160 480,180 560,100 640,120 720,60 800,80' 
+    fill='none' stroke='%23C9A96E' stroke-width='2' opacity='0.6'>
+    <animate attributeName='stroke-dashoffset' from='1000' to='0' dur='3s' repeatCount='indefinite'/>
+    <animateAttribute attributeName='stroke-dasharray' from='0,1000' to='1000,0' dur='3s' repeatCount='indefinite'/>
+  </polyline>
+  <polyline points='0,340 80,320 160,330 240,280 320,295 400,230 480,245 560,180 640,200 720,140 800,160' 
+    fill='none' stroke='%231a4a6b' stroke-width='1.5' opacity='0.5'>
+  </polyline>
+  <circle cx='400' cy='160' r='4' fill='%23C9A96E' opacity='0.8'/>
+  <circle cx='560' cy='100' r='4' fill='%23C9A96E' opacity='0.8'/>
+  <circle cx='720' cy='60' r='4' fill='%23C9A96E' opacity='0.8'/>
+  <line x1='0' y1='0' x2='0' y2='400' stroke='%23C9A96E' stroke-width='0.3' opacity='0.15' stroke-dasharray='8,8'/>
+  <line x1='160' y1='0' x2='160' y2='400' stroke='%23C9A96E' stroke-width='0.3' opacity='0.15' stroke-dasharray='8,8'/>
+  <line x1='320' y1='0' x2='320' y2='400' stroke='%23C9A96E' stroke-width='0.3' opacity='0.15' stroke-dasharray='8,8'/>
+  <line x1='480' y1='0' x2='480' y2='400' stroke='%23C9A96E' stroke-width='0.3' opacity='0.15' stroke-dasharray='8,8'/>
+  <line x1='640' y1='0' x2='640' y2='400' stroke='%23C9A96E' stroke-width='0.3' opacity='0.15' stroke-dasharray='8,8'/>
+  <line x1='800' y1='0' x2='800' y2='400' stroke='%23C9A96E' stroke-width='0.3' opacity='0.15' stroke-dasharray='8,8'/>
+  <line x1='0' y1='100' x2='800' y2='100' stroke='%23C9A96E' stroke-width='0.3' opacity='0.1' stroke-dasharray='8,8'/>
+  <line x1='0' y1='200' x2='800' y2='200' stroke='%23C9A96E' stroke-width='0.3' opacity='0.1' stroke-dasharray='8,8'/>
+  <line x1='0' y1='300' x2='800' y2='300' stroke='%23C9A96E' stroke-width='0.3' opacity='0.1' stroke-dasharray='8,8'/>
+</svg>`;
+
+const SVG_FAMILY = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400' preserveAspectRatio='xMidYMid slice'>
+  <rect width='800' height='400' fill='%230b1826'/>
+  <circle cx='400' cy='200' r='280' fill='none' stroke='%23C9A96E' stroke-width='0.5' opacity='0.15'/>
+  <circle cx='400' cy='200' r='200' fill='none' stroke='%23C9A96E' stroke-width='0.5' opacity='0.12'/>
+  <circle cx='400' cy='200' r='120' fill='none' stroke='%23C9A96E' stroke-width='0.5' opacity='0.1'/>
+  <circle cx='400' cy='200' r='60' fill='%23C9A96E' opacity='0.04'/>
+  <polygon points='400,80 480,160 480,240 400,300 320,240 320,160' fill='none' stroke='%23C9A96E' stroke-width='0.8' opacity='0.2'/>
+  <polygon points='400,120 450,170 450,230 400,265 350,230 350,170' fill='none' stroke='%23C9A96E' stroke-width='0.6' opacity='0.15'/>
+  <line x1='200' y1='200' x2='600' y2='200' stroke='%23C9A96E' stroke-width='0.4' opacity='0.1'/>
+  <line x1='400' y1='50' x2='400' y2='350' stroke='%23C9A96E' stroke-width='0.4' opacity='0.1'/>
+  <circle cx='400' cy='200' r='8' fill='%23C9A96E' opacity='0.3'/>
+  <circle cx='250' cy='150' r='5' fill='%23C9A96E' opacity='0.2'/>
+  <circle cx='550' cy='150' r='5' fill='%23C9A96E' opacity='0.2'/>
+  <circle cx='250' cy='250' r='5' fill='%23C9A96E' opacity='0.2'/>
+  <circle cx='550' cy='250' r='5' fill='%23C9A96E' opacity='0.2'/>
+  <line x1='400' y1='200' x2='250' y2='150' stroke='%23C9A96E' stroke-width='0.5' opacity='0.15'/>
+  <line x1='400' y1='200' x2='550' y2='150' stroke='%23C9A96E' stroke-width='0.5' opacity='0.15'/>
+  <line x1='400' y1='200' x2='250' y2='250' stroke='%23C9A96E' stroke-width='0.5' opacity='0.15'/>
+  <line x1='400' y1='200' x2='550' y2='250' stroke='%23C9A96E' stroke-width='0.5' opacity='0.15'/>
+</svg>`;
+
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   useEffect(() => {
@@ -415,10 +464,15 @@ function Shell({ onBack, badge, headline, sub, children }) {
         <div style={{ width: 1, height: 20, background: "rgba(201,168,76,0.2)" }}/>
         <LogoIcon size={36} useReal={true}/>
       </div>
-      {/* Hero photo band */}
-      {PAGE_PHOTOS[badge?.toLowerCase().replace(/ /g,'-')] && false}
+      {/* Hero photo/svg band */}
       <div style={{ position: "relative", height: 220, overflow: "hidden", marginBottom: 0 }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${PAGE_PHOTOS[Object.keys(PAGE_PHOTOS).find(k => badge && DETAIL[k] && DETAIL[k].badge === badge) || 'center'] || PAGE_PHOTOS.center})`, backgroundSize: "cover", backgroundPosition: "center" }}/>
+        {badge === "Agente Productor CNV — Balanz" ? (
+          <div style={{ position: "absolute", inset: 0, backgroundImage: `url("data:image/svg+xml,${SVG_FINANCE}")`, backgroundSize: "cover", backgroundPosition: "center" }}/>
+        ) : badge === "Gestión Patrimonial Integral" ? (
+          <div style={{ position: "absolute", inset: 0, backgroundImage: `url("data:image/svg+xml,${SVG_FAMILY}")`, backgroundSize: "cover", backgroundPosition: "center" }}/>
+        ) : (
+          <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${PAGE_PHOTOS[Object.keys(PAGE_PHOTOS).find(k => badge && DETAIL[k] && DETAIL[k].badge === badge) || "center"] || PAGE_PHOTOS.center})`, backgroundSize: "cover", backgroundPosition: "center" }}/>
+        )}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(11,24,38,0.5) 0%, rgba(11,24,38,0.95) 100%)" }}/>
       </div>
       <div style={{ padding: "40px clamp(16px, 6vw, 80px) 80px", maxWidth: 1120, margin: "0 auto", animation: "fsi 0.5s ease both" }}>
