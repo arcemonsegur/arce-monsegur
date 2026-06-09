@@ -350,9 +350,9 @@ function MapNode({ id, onNavigate }) {
 
 function MindMap({ onNavigate }) {
   return (
-    <div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch", cursor: "grab" }}>
+    <div style={{ width: "100%", overflowX: isMobile ? "hidden" : "auto", WebkitOverflowScrolling: "touch" }}>
       <svg viewBox="0 0 900 700"
-        style={{ display: "block", margin: "0 auto", width: "100%", minWidth: 600, maxWidth: 900 }}>
+        style={{ display: "block", margin: "0 auto", width: "100%", maxWidth: 900 }}>
         <defs>
           <style>{`
             @keyframes dl { to { stroke-dashoffset: 0 } }
