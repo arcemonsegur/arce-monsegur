@@ -332,8 +332,7 @@ function MapNode({ id, onNavigate }) {
           textAnchor="middle" dominantBaseline="middle"
           fill={tc} fontFamily="'Barlow Condensed', sans-serif"
           fontSize={fs} fontWeight="700" letterSpacing="0.08em"
-          style={{ textTransform: "uppercase", pointerEvents: "none" }}
-          style={{ pointerEvents: "none" }}>
+          style={{ textTransform: "uppercase", pointerEvents: "none" }}>
           {line}
         </text>
       ))}
@@ -349,6 +348,7 @@ function MapNode({ id, onNavigate }) {
 }
 
 function MindMap({ onNavigate }) {
+  const isMobile = useIsMobile();
   return (
     <div style={{ width: "100%", overflowX: isMobile ? "hidden" : "auto", WebkitOverflowScrolling: "touch" }}>
       <svg viewBox="0 0 900 700"
