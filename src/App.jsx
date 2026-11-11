@@ -272,14 +272,13 @@ const NODES = {
   fci_re:       { x: 90,  y: 75,  r: 52,  lines: ["Fondo", "Real Estate"],                isSub: true },
   fci_fin:      { x: 310, y: 75,  r: 52,  lines: ["Fondo", "Financiero"],                 isSub: true },
   admin_temp:   { x: 600, y: 210, r: 64,  lines: ["Alquileres", "Temporales", "(Airbnb)"], isSub: true },
-  propiedades:  { x: 720, y: 90,  r: 68,  lines: ["Propiedades", "Disponibles"], isSub: true },
   admin_cv:     { x: 750, y: 560, r: 72,  lines: ["Refacciones", "y Mantenimiento"],    isSub: true },
 };
 
 const CONNECTIONS = [
   ["center", "fci"], ["center", "family"], ["center", "admin"], ["center", "mercado"],
   ["fci", "fci_re"], ["fci", "fci_fin"],
-  ["admin", "admin_temp"], ["admin", "admin_cv"], ["admin", "compraventa"], ["admin_temp", "propiedades"],
+  ["admin", "admin_temp"], ["admin", "admin_cv"], ["admin", "compraventa"],
 ];
 
 function Line({ x1, y1, x2, y2, delay = 0 }) {
