@@ -267,11 +267,11 @@ const NODES = {
   fci:          { x: 210, y: 190, r: 80,  lines: ["Fondos de", "Inversión"] },
   family:       { x: 230, y: 525, r: 80,  lines: ["Family", "Office"] },
   mercado:      { x: 120, y: 355, r: 86,  lines: ["Mercado de", "Capitales"] },
-  admin:        { x: 720, y: 355, r: 80,  lines: ["Administración", "de Propiedades"] },
+  admin:        { x: 720, y: 360, r: 96,  lines: ["Administración", "de Propiedades"] },
   compraventa:  { x: 580, y: 528, r: 74,  lines: ["Propiedades en", "Venta y Alq."], isSub: true },
   fci_re:       { x: 90,  y: 75,  r: 52,  lines: ["Fondo", "Real Estate"],                isSub: true },
   fci_fin:      { x: 310, y: 75,  r: 52,  lines: ["Fondo", "Financiero"],                 isSub: true },
-  admin_temp:   { x: 600, y: 210, r: 64,  lines: ["Alquileres", "Temporales", "(Airbnb)"], isSub: true },
+  admin_temp:   { x: 720, y: 150, r: 88,  lines: [], title: "CICO", subtitle: ["Alquileres temporales", "y fijos"], isSub: true },
   admin_cv:     { x: 750, y: 560, r: 72,  lines: ["Refacciones", "y Mantenimiento"],    isSub: true },
 };
 
@@ -324,6 +324,27 @@ function MapNode({ id, onNavigate }) {
           preserveAspectRatio="xMidYMid meet"
           style={{ pointerEvents: "none" }}
         />
+      )}
+      {n.title && (
+        <g style={{ pointerEvents: "none" }}>
+          <text x={n.x} y={n.y - 18}
+            textAnchor="middle" dominantBaseline="middle"
+            fill={GOLD} stroke={NAVY} strokeWidth="0.6" paintOrder="stroke"
+            fontFamily="'Barlow Condensed', sans-serif"
+            fontSize="48" fontWeight="800" letterSpacing="0.14em">
+            {n.title}
+          </text>
+          <line x1={n.x - 30} y1={n.y + 11} x2={n.x + 30} y2={n.y + 11}
+            stroke={GOLD} strokeWidth="2" opacity="0.8"/>
+          {n.subtitle.map((line, i) => (
+            <text key={i} x={n.x} y={n.y + 29 + i * 16}
+              textAnchor="middle" dominantBaseline="middle"
+              fill="#FFFFFF" fontFamily="'Barlow', sans-serif"
+              fontSize="14" fontWeight="500" letterSpacing="0.02em">
+              {line}
+            </text>
+          ))}
+        </g>
       )}
       {n.lines.map((line, i) => (
         <text key={i}
