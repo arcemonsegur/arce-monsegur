@@ -263,7 +263,7 @@ const DETAIL = {
 const CX = 450, CY = 360;
 
 const NODES = {
-  center:       { x: CX,  y: CY,  r: 105, lines: ["ARCE", "MONSEGUR"], isCenter: true },
+  center:       { x: CX,  y: CY,  r: 105, lines: ["GRUPO", "ARCE", "MONSEGUR"], isCenter: true },
   fci:          { x: 210, y: 190, r: 80,  lines: ["Fondos de", "Inversión"] },
   family:       { x: 230, y: 525, r: 80,  lines: ["Family", "Office"] },
   mercado:      { x: 120, y: 355, r: 86,  lines: ["Mercado de", "Capitales"] },
@@ -319,8 +319,8 @@ function MapNode({ id, onNavigate }) {
       {n.isCenter && (
         <image
           href={LOGO_ICON}
-          x={n.x - 52} y={n.y - 62}
-          width={104} height={104}
+          x={n.x - 46} y={n.y - 90}
+          width={92} height={92}
           preserveAspectRatio="xMidYMid meet"
           style={{ pointerEvents: "none" }}
         />
@@ -348,7 +348,7 @@ function MapNode({ id, onNavigate }) {
       )}
       {n.lines.map((line, i) => (
         <text key={i}
-          x={n.x} y={n.isCenter ? n.y + 52 + i * (fs + 3) : n.y - tot / 2 + i * lh + lh * 0.65}
+          x={n.x} y={n.isCenter ? n.y + 24 + i * (fs + 3) : n.y - tot / 2 + i * lh + lh * 0.65}
           textAnchor="middle" dominantBaseline="middle"
           fill={tc} fontFamily="'Barlow Condensed', sans-serif"
           fontSize={fs} fontWeight="700" letterSpacing="0.08em"
