@@ -268,7 +268,7 @@ const NODES = {
   family:       { x: 230, y: 525, r: 80,  lines: ["Family", "Office"] },
   mercado:      { x: 120, y: 355, r: 86,  lines: ["Mercado de", "Capitales"] },
   admin:        { x: 720, y: 360, r: 96,  lines: ["Administración", "de Propiedades"] },
-  compraventa:  { x: 580, y: 528, r: 74,  lines: ["Propiedades en", "Venta y Alq."], isSub: true },
+  compraventa:  { x: 580, y: 528, r: 74,  lines: ["Propiedades", "en Venta"], isSub: true },
   fci_re:       { x: 90,  y: 75,  r: 52,  lines: ["Fondo", "Real Estate"],                isSub: true },
   fci_fin:      { x: 310, y: 75,  r: 52,  lines: ["Fondo", "Financiero"],                 isSub: true },
   admin_temp:   { x: 720, y: 150, r: 88,  lines: [], title: "CICO", subtitle: ["Alquileres temporales", "y fijos"], isSub: true },
