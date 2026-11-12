@@ -1127,11 +1127,20 @@ function ContactPage({ onBack }) {
   );
 }
 
+// Burbujas que llevan a un sitio externo en vez de abrir un panel
+const EXTERNAL_LINKS = {
+  admin_temp: "https://215901-001.holidayfuture.com/",
+};
+
 export default function App() {
   const [page, setPage] = useState("home");
   const [hist, setHist] = useState([]);
 
   const go = (id) => {
+    if (EXTERNAL_LINKS[id]) {
+      window.open(EXTERNAL_LINKS[id], "_blank", "noopener,noreferrer");
+      return;
+    }
     setHist(h => [...h, page]);
     setPage(id);
     window.scrollTo({ top: 0, behavior: "smooth" });
