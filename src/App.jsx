@@ -264,15 +264,15 @@ const CX = 450, CY = 360;
 
 const NODES = {
   center:       { x: CX,  y: CY,  r: 105, lines: ["GRUPO", "ARCE", "MONSEGUR"], isCenter: true },
-  fci:          { x: 210, y: 190, r: 80,  lines: ["Fondos de", "Inversión"] },
-  family:       { x: 230, y: 525, r: 80,  lines: ["Family", "Office"] },
-  mercado:      { x: 120, y: 355, r: 86,  lines: ["Mercado de", "Capitales"] },
-  admin:        { x: 720, y: 360, r: 96,  lines: ["Administración", "de Propiedades"] },
-  compraventa:  { x: 580, y: 528, r: 74,  lines: ["Propiedades", "en Venta"], isSub: true },
-  fci_re:       { x: 90,  y: 75,  r: 52,  lines: ["Fondo", "Real Estate"],                isSub: true },
-  fci_fin:      { x: 310, y: 75,  r: 52,  lines: ["Fondo", "Financiero"],                 isSub: true },
-  admin_temp:   { x: 720, y: 150, r: 88,  lines: [], title: "CICO", subtitle: ["Alquileres temporales", "y fijos"], isSub: true },
-  admin_cv:     { x: 750, y: 560, r: 72,  lines: ["Refacciones", "y Mantenimiento"],    isSub: true },
+  fci:          { x: 219, y: 189, r: 80,  lines: ["Fondos de", "Inversión"] },
+  family:       { x: 239, y: 520, r: 79,  lines: ["Family", "Office"] },
+  mercado:      { x: 130, y: 352, r: 85,  lines: ["Mercado de", "Capitales"] },
+  admin:        { x: 724, y: 357, r: 95,  lines: ["CICO"], isAdmin: true },
+  compraventa:  { x: 585, y: 523, r: 73,  lines: ["Propiedades", "en Venta"], isSub: true },
+  fci_re:       { x: 101, y: 74,  r: 58,  lines: ["Fondo", "Real Estate"],  isSub: true },
+  fci_fin:      { x: 318, y: 74,  r: 58,  lines: ["Fondo", "Financiero"],   isSub: true },
+  admin_temp:   { x: 724, y: 149, r: 87,  lines: ["Alquileres", "Temporales", "y Fijos"], isSub: true },
+  admin_cv:     { x: 754, y: 555, r: 78,  lines: ["Refacciones", "y Mantenimiento"], isSub: true },
 };
 
 const CONNECTIONS = [
@@ -297,7 +297,7 @@ function MapNode({ id, onNavigate }) {
   const [hov, setHov] = useState(false);
   const nodeColor = NODE_COLORS[id];
   const fill = n.isCenter ? GOLD : hov ? (nodeColor ? nodeColor + "dd" : "#22384f") : (nodeColor || NAVY2);
-  const tc   = n.isCenter ? NAVY : nodeColor ? "#FFFFFF" : GOLD;
+  const tc   = n.isCenter ? NAVY : id === "mercado" ? GOLD : nodeColor ? "#FFFFFF" : GOLD;
   const sc   = hov || n.isCenter ? GOLD : "rgba(201,168,76,0.45)";
   const fs   = n.isSub ? 13.5 : n.isCenter ? 19 : 17;
   const lh   = fs + 4;
@@ -319,36 +319,27 @@ function MapNode({ id, onNavigate }) {
       {n.isCenter && (
         <image
           href={LOGO_ICON}
-          x={n.x - 46} y={n.y - 90}
-          width={92} height={92}
+          x={n.x - 44} y={n.y - 90}
+          width={88} height={88}
           preserveAspectRatio="xMidYMid meet"
           style={{ pointerEvents: "none" }}
         />
       )}
-      {n.title && (
+      {n.isAdmin && (
         <g style={{ pointerEvents: "none" }}>
-          <text x={n.x} y={n.y - 18}
-            textAnchor="middle" dominantBaseline="middle"
-            fill={GOLD} stroke={NAVY} strokeWidth="0.6" paintOrder="stroke"
-            fontFamily="'Barlow Condensed', sans-serif"
-            fontSize="48" fontWeight="800" letterSpacing="0.14em">
-            {n.title}
-          </text>
-          <line x1={n.x - 30} y1={n.y + 11} x2={n.x + 30} y2={n.y + 11}
-            stroke={GOLD} strokeWidth="2" opacity="0.8"/>
-          {n.subtitle.map((line, i) => (
-            <text key={i} x={n.x} y={n.y + 29 + i * 16}
-              textAnchor="middle" dominantBaseline="middle"
-              fill="#FFFFFF" fontFamily="'Barlow', sans-serif"
-              fontSize="14" fontWeight="500" letterSpacing="0.02em">
-              {line}
-            </text>
-          ))}
+          <text x={n.x} y={n.y - 22} textAnchor="middle" dominantBaseline="middle"
+            fill="#C8AC78" fontFamily="'Barlow Condensed', sans-serif"
+            fontSize="50" fontWeight="800" letterSpacing="0.14em">CICO</text>
+          <line x1={n.x - 32} y1={n.y + 10} x2={n.x + 32} y2={n.y + 10} stroke="#C8AC78" strokeWidth="2"/>
+          <text x={n.x} y={n.y + 30} textAnchor="middle" dominantBaseline="middle"
+            fill="#FFFFFF" fontFamily="'Barlow', sans-serif" fontSize="15" fontWeight="500">Administración</text>
+          <text x={n.x} y={n.y + 48} textAnchor="middle" dominantBaseline="middle"
+            fill="#FFFFFF" fontFamily="'Barlow', sans-serif" fontSize="15" fontWeight="500">de Propiedades</text>
         </g>
       )}
-      {n.lines.map((line, i) => (
+      {!n.isAdmin && n.lines.map((line, i) => (
         <text key={i}
-          x={n.x} y={n.isCenter ? n.y + 24 + i * (fs + 3) : n.y - tot / 2 + i * lh + lh * 0.65}
+          x={n.x} y={n.isCenter ? n.y + 22 + i * 22 : n.y - tot / 2 + i * lh + lh * 0.65}
           textAnchor="middle" dominantBaseline="middle"
           fill={tc} fontFamily="'Barlow Condensed', sans-serif"
           fontSize={fs} fontWeight="700" letterSpacing="0.08em"
@@ -402,8 +393,8 @@ function MindMap({ onNavigate }) {
         ))}
         {/* COMING SOON label on fci->center line */}
         <g style={{ animation: "pi 0.5s 1s ease both", opacity: 0 }}>
-          <rect x="238" y="234" width="138" height="26" rx="4" fill={NAVY} stroke={GOLD} strokeWidth="1.5"/>
-          <text x="307" y="247" textAnchor="middle" dominantBaseline="middle"
+          <rect x="247" y="232" width="138" height="26" rx="4" fill={NAVY} stroke={GOLD} strokeWidth="1.5"/>
+          <text x="316" y="245" textAnchor="middle" dominantBaseline="middle"
             fill={GOLD} fontFamily="'Barlow', sans-serif"
             fontSize="10" fontWeight="700" letterSpacing="0.14em">
             🚧 COMING SOON
@@ -1127,20 +1118,11 @@ function ContactPage({ onBack }) {
   );
 }
 
-// Burbujas que llevan a un sitio externo en vez de abrir un panel
-const EXTERNAL_LINKS = {
-  admin_temp: "https://215901-001.holidayfuture.com/",
-};
-
 export default function App() {
   const [page, setPage] = useState("home");
   const [hist, setHist] = useState([]);
 
   const go = (id) => {
-    if (EXTERNAL_LINKS[id]) {
-      window.open(EXTERNAL_LINKS[id], "_blank", "noopener,noreferrer");
-      return;
-    }
     setHist(h => [...h, page]);
     setPage(id);
     window.scrollTo({ top: 0, behavior: "smooth" });
