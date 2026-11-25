@@ -304,7 +304,7 @@ function MapNode({ id, onNavigate }) {
   const tot  = n.lines.length * lh;
 
   return (
-    <g onClick={() => onNavigate(id)}
+    <g onClick={() => id === "admin_temp" ? window.open("https://cicopropiedades.arcemonsegur.com", "_blank", "noopener") : onNavigate(id)}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       style={{ cursor: "pointer", animation: `pi 0.5s ${n.isCenter ? 0.05 : n.isSub ? 0.75 : 0.4}s ease both`, opacity: 0 }}>
